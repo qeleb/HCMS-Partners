@@ -1,0 +1,32 @@
+.Contact {
+  padding-bottom: 2rem;
+  background: #fff;
+  text-align: center;
+
+  & > h2 {
+    margin-top: 3rem;
+    color: #545454;
+    font-weight: 300;
+    font-size: 28px;
+  }
+
+  & > span {
+    display: block;
+    width: min(20rem, 95%);
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #363636;
+    color: #fff;
+    text-align: left;
+    text-wrap: nowrap;
+
+    & > h4 {
+      margin: 0;
+      text-align: center;
+    }
+
+    & > a {
+      color: #e8e8e8;
+    }
+  }
+}

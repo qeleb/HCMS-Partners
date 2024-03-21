@@ -1,0 +1,18 @@
+.LabeledBanner {
+  position: relative;
+
+  & > img {
+    width: 100%;
+  }
+
+  & > span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.5rem 1rem;
+    background: rgba(54, 54, 54, 0.5);
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+}
