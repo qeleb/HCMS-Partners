@@ -1,0 +1,151 @@
+@use '@/variables.scss' as *;
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  flex-flow: column;
+  transition:
+    backdrop-filter 0.45s ease 0s allow-discrete,
+    box-shadow 0.28s ease;
+
+  & > .nav-main > div > a,
+  & > .nav-extension > a {
+    color: #333;
+    transition: all 0.25s ease;
+
+    &:hover,
+    &[aria-current] {
+      background: #cf0a2c;
+      color: #fff;
+    }
+  }
+
+  & > .nav-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $navbar-height;
+    padding: 0 max(calc(50% - 620px), 4rem);
+    background: #ffffffd0;
+    box-shadow: 5px 3px 8px 0 rgba(0, 0, 0, 0.06);
+    font-weight: 400;
+    transition: backdrop-filter 0.2s ease;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+
+    & > a {
+      height: 100%;
+      padding: 0.3rem 0;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    & > button {
+      display: none;
+      width: 2rem;
+      height: 2rem;
+      background: none;
+      stroke: #333;
+      transition: all 0.15s ease;
+      stroke-width: 2;
+
+      @media only screen and (hover: hover) {
+        &:hover {
+          stroke-width: 3;
+        }
+      }
+
+      &:active {
+        stroke: #cf0a2c;
+        transition-duration: 0s;
+        stroke-width: 4;
+      }
+
+      & > svg {
+        height: 100%;
+      }
+    }
+
+    & > div {
+      display: flex;
+      height: 100%;
+
+      & > a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 1rem;
+        color: #373737;
+        font-size: 13px;
+        letter-spacing: 1px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: #cf0a2c;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  & > .nav-extension {
+    display: none;
+    flex-flow: column;
+    height: 100%;
+    padding-bottom: 1rem;
+    box-shadow: 5px 3px 8px 0 rgba(0, 0, 0, 0.06);
+    transition: all 0.45s ease;
+    clip-path: inset(0 0 100% 0);
+
+    & > a {
+      width: 80%;
+      margin: auto;
+      padding: 1rem;
+      text-align: center;
+    }
+  }
+
+  &.show {
+    box-shadow: 5px 3px 8px 0 rgba(0, 0, 0, 0.06);
+    transition-delay: 0s, 0.28s;
+    transition-duration: 0.45s, 0.45s;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+
+    & > .nav-main {
+      box-shadow: none;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
+
+    & > .nav-extension {
+      background: #ffffffd0;
+      clip-path: inset(0);
+    }
+  }
+
+  /* stylelint-disable-next-line order/order */
+  @media screen and (max-width: 1048px) {
+    & > .nav-main {
+      padding: 0 max(calc(50% - 620px), 2rem);
+
+      & > button {
+        display: block;
+      }
+
+      & > div {
+        display: none;
+      }
+    }
+
+    & > .nav-extension {
+      display: flex;
+    }
+  }
+}

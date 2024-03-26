@@ -1,0 +1,34 @@
+@use '@/variables.scss' as *;
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  outline: none !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent; // Remove gray highlights on links (iOS)
+  -webkit-text-size-adjust: 100%; // Keep font-size after rotation (iOS)
+}
+
+body {
+  padding: $navbar-height 0 0;
+  background: #fff; // linear-gradient(#fff 0 50%, #363636 50% 100%);
+  color: #4a4a4a;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}

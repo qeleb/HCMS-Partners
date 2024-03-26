@@ -11,7 +11,7 @@ export const Contact = () => {
     <div class={styles.Contact}>
       <LabeledBanner bannerImgUrl={bannerHK} label="HONG KONG" />
       <h2>Contact Us</h2>
-      We'd be happy to answer any questions you might have!
+      <p>We'd be happy to answer any questions you might have!</p>
       <span>
         <h4>ADDRESS</h4>
         <StreetAddress />

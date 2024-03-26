@@ -47,6 +47,7 @@ footer {
 
   & > .main {
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
     border: solid #4a4a4a;
     border-width: 2px 0;
@@ -62,7 +63,7 @@ footer {
       font-size: 12.5px;
 
       & > h6 {
-        margin: 1rem 0;
+        margin: 2rem 0 0;
         color: #fff;
         font-size: 14px;
       }

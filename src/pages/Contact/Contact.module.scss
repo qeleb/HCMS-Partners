@@ -3,6 +3,10 @@
   background: #fff;
   text-align: center;
 
+  & > p {
+    padding: 0 1.5rem;
+  }
+
   & > h2 {
     margin-top: 3rem;
     color: #545454;

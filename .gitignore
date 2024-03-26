@@ -36,6 +36,9 @@ yarn-error.log*
 # Dist
 dist
 
+# Firebase
+.firebase/
+
 # Environment
 *.local
 /secrets.json

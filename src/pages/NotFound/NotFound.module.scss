@@ -1,19 +1,17 @@
 .NotFound {
-  width: min(95%, 60rem);
-  margin: auto;
   padding: 10rem 1rem;
+  background: #fff;
+  text-align: center;
 
   & > h2 {
     color: #545454;
     font-weight: 300;
     font-size: 28px;
     line-height: 1.2;
-    text-align: center;
   }
 
   & > div {
     font-size: 1rem;
-    text-align: center;
 
     & > a {
       color: #cf0a2c;
