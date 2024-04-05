@@ -30,8 +30,10 @@
       text-align: center;
       transition: all 0.15s ease;
 
-      &:hover {
-        background: #9f1730 !important;
+      @media only screen and (hover: hover) {
+        &:hover {
+          background: #9f1730 !important;
+        }
       }
     }
   }
@@ -42,17 +44,34 @@
     text-align: center;
   }
 
-  & > .partnerGrid {
+  & > .grid {
     display: grid;
-    grid-template: auto / repeat(3, 1fr);
-    gap: clamp(1.2rem, 5rem, 20%);
-    width: 80%;
-    max-width: 50rem;
-    margin: 2rem auto;
+    margin: 1rem auto;
 
     & > img {
-      overflow: hidden; // Prevents overflow bug in Safari/Chrome/Edge with small width
       width: 100%;
+    }
+
+    &.gridServices {
+      grid-template: auto / repeat(3, 1fr);
+      gap: 0;
+      width: min(60rem, 100%);
+
+      & > div {
+        text-align: center;
+      }
+    }
+
+    &.gridPartners {
+      grid-template: auto / repeat(3, 1fr);
+      max-width: 43rem;
+      column-gap: clamp(1.2rem, 8vw, 5rem);
+    }
+
+    &.gridClients {
+      grid-template: auto / repeat(5, 1fr);
+      max-width: 55rem;
+      column-gap: clamp(0.5rem, 3vw, 3rem);
     }
   }
 
@@ -98,10 +117,14 @@
     }
   }
 
+  &.sectionServicesList {
+    background: #f0f0f0;
+  }
+
   &.sectionClientsSample {
     background: #f0f0f0;
 
-    & > div {
+    & > span {
       margin: 1rem 15%;
       text-align: center;
     }
@@ -109,9 +132,15 @@
 
   /* stylelint-disable-next-line order/order */
   @media screen and (max-width: 900px) {
-    &.partnerGrid {
-      grid-template: auto / repeat(2, 1fr);
-      max-width: 500px;
+    & > .grid {
+      &.gridPartners {
+        grid-template: auto / repeat(2, 1fr);
+        max-width: 420px;
+      }
+
+      &.gridClients {
+        grid-template: auto / repeat(4, 1fr);
+      }
     }
 
     &.sectionServices > div {
@@ -128,9 +157,19 @@
   }
 
   @media screen and (max-width: 480px) {
-    &.partnerGrid {
-      grid-template: auto / repeat(1, 1fr);
-      max-width: 180px;
+    & > .grid {
+      &.gridServices {
+        grid-template: auto / repeat(1, 1fr);
+      }
+
+      &.gridPartners {
+        grid-template: auto / repeat(1, 1fr);
+        max-width: 170px;
+      }
+
+      &.gridClients {
+        grid-template: auto / repeat(2, 1fr);
+      }
     }
   }
 }

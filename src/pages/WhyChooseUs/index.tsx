@@ -1,4 +1,4 @@
-import bannerUK from '@/assets/bannerUK.jpg';
+import bannerUK from '@/assets/banners/bannerUK.jpg';
 import { LabeledBanner } from '@/components/LabeledBanner';
 import { SectionQuestions } from '@/components/Sections/SectionQuestions';
 import styles from '@/pages/WhyChooseUs/WhyChooseUs.module.scss';

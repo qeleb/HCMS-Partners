@@ -1,8 +1,10 @@
 .LabeledBanner {
   position: relative;
+  margin-bottom: -7px; //TODO: Define banner aspect-ratios & remove this line
 
   & > img {
-    width: 100%;
+    width: calc(100%);
+    box-shadow: 2px 3px 7px 0 rgba(0, 0, 0, 0.06);
   }
 
   & > span {

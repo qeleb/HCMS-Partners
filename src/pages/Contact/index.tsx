@@ -1,4 +1,4 @@
-import bannerHK from '@/assets/bannerHK.jpg';
+import bannerHK from '@/assets/banners/bannerHK.jpg';
 import { EmailAddress, PhoneNumber, StreetAddress } from '@/components/ContactInfo';
 import { LabeledBanner } from '@/components/LabeledBanner';
 import styles from '@/pages/Contact/Contact.module.scss';

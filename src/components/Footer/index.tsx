@@ -33,10 +33,10 @@ export const Footer = () => (
         <A href="/contact">CONTACT US</A>
       </div>
       <div>
-        <h6>SERVICES</h6> {/*TODO: Fix services # doc links */}
-        <A href="/services">ORACLE HCM CLOUD & EBS SERVICES</A>
-        <A href="/services">DEVELOPMENT & INTEGRATION SERVICES</A>
-        <A href="/services">STRATEGIC HR SERVICES</A>
+        <h6>SERVICES</h6>
+        <A href="/services#hcm-and-ebs">ORACLE HCM CLOUD & EBS SERVICES</A>
+        <A href="/services#dev-and-integration">DEVELOPMENT & INTEGRATION SERVICES</A>
+        <A href="/services#strategic-hr">STRATEGIC HR SERVICES</A>
       </div>
       <div>
         <h6>ADDRESS</h6>

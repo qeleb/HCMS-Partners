@@ -5,8 +5,7 @@ export const SectionServices = () => (
   <section class={`${styles.section} ${styles.sectionServices}`}>
     <h2>Our Services</h2>
     <div>
-      <A href="/services">
-        {/*TODO: Finalize services link */}
+      <A href="/services#hcm-and-ebs">
         <svg viewBox="0 0 59 53">
           <g fill="#FFF" fill-rule="evenodd">
             <path d="M50.4 16.9A17.2 17.2 0 0 0 33 0c-8 0-15 5.3-16.9 12.8a10.8 10.8 0 0 0-9 11.9c0 .3.1.6.4.8.4.5 1.2.5 1.7 0a1.2 1.2 0 0 0 .4-1l-.1-1.2c0-4.2 3.4-7.8 7.7-8.2.6 0 1-.4 1.2-1A14.9 14.9 0 0 1 33 2.5C41.2 2.4 48 9 48 17l-.1 1.1c0 .4 0 .7.4 1 .2.2.6.3 1 .3h.2l.7-.1c3.5 0 6.3 2.8 6.3 6.2a6 6 0 0 1-5.6 6c-.7.1-1.2.7-1 1.4a1.2 1.2 0 0 0 1.3 1 8.6 8.6 0 0 0 7.8-8.4c0-4.7-3.9-8.6-8.6-8.6Z" />
@@ -15,8 +14,7 @@ export const SectionServices = () => (
         </svg>
         Oracle HCM Cloud & EBS Services
       </A>
-      <A href="/services">
-        {/*TODO: Finalize services link */}
+      <A href="/services#dev-and-integration">
         <svg viewBox="0 0 54 52">
           <g fill="none" fill-rule="evenodd">
             <path
@@ -31,8 +29,7 @@ export const SectionServices = () => (
         </svg>
         Development & Integration Services
       </A>
-      <A href="/services">
-        {/*TODO: Finalize services link */}
+      <A href="/services#strategic-hr">
         <svg viewBox="0 0 54 54">
           <g fill="#FFF" fill-rule="evenodd">
             <path d="M52.2 32.2H48a12.2 12.2 0 0 0-.2-.4l3-3a1.1 1.1 0 0 0 0-1.6L46 22.5a1.1 1.1 0 0 0-1.6 0l-3 3-.4-.2v-4.2a1.1 1.1 0 0 0-1-1.1h-6.7a1.1 1.1 0 0 0-1 1.1v4.2l-.5.2-3-3a1.1 1.1 0 0 0-1.6 0l-4.7 4.7a1.1 1.1 0 0 0 0 1.6l3 3-.2.4h-4.2c-.6 0-1.1.5-1.1 1.1V40c0 .6.5 1 1.1 1h4.2l.2.5-3 3a1.1 1.1 0 0 0 0 1.6l4.7 4.7a1.1 1.1 0 0 0 1.6 0l3-3 .4.2v4.2c0 .6.5 1.1 1.1 1.1H40a1.1 1.1 0 0 0 1-1.1V48l.5-.2 3 3a1.1 1.1 0 0 0 1.6 0l4.7-4.7a1.1 1.1 0 0 0 0-1.6l-3-3 .2-.4h4.2a1.1 1.1 0 0 0 1.1-1.1v-6.7a1.1 1.1 0 0 0-1.1-1.1Zm-1.1 6.7h-4c-.4 0-.8.3-1 .7a9.7 9.7 0 0 1-.6 1.6 1.1 1.1 0 0 0 .2 1.3l2.7 2.8-3.1 3.1-2.8-2.7a1.1 1.1 0 0 0-1.3-.2 9.7 9.7 0 0 1-1.6.6 1.1 1.1 0 0 0-.7 1v4h-4.5v-4c0-.4-.3-.8-.7-1a9.7 9.7 0 0 1-1.6-.6 1.1 1.1 0 0 0-1.3.2L28 48.4l-3-3.1 2.7-2.8c.4-.3.5-.8.2-1.3a9.7 9.7 0 0 1-.6-1.6 1.1 1.1 0 0 0-1-.7h-4v-4.5h4c.4 0 .8-.3 1-.8a9.7 9.7 0 0 1 .6-1.5c.3-.5.2-1-.2-1.3L25 28l3.1-3.1 2.8 2.7c.3.4.8.4 1.3.2a9.7 9.7 0 0 1 1.6-.6c.4-.2.7-.6.7-1.1v-3.9H39v3.9c0 .5.3 1 .8 1a9.7 9.7 0 0 1 1.5.7c.5.2 1 .2 1.3-.2l2.8-2.7 3.1 3.1-2.7 2.8c-.4.3-.4.8-.2 1.3l.6 1.5c.2.5.6.8 1 .8h4V39Z" />
