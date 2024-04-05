@@ -1,3 +1,5 @@
+@use '@/variables.scss' as *;
+
 .section {
   display: flex;
   flex-flow: column;
@@ -9,6 +11,7 @@
     font-weight: 300;
     font-size: 28px;
     text-align: center;
+    scroll-margin-top: $navbar-height;
   }
 
   & > div {
