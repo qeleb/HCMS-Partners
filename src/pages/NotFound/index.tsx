@@ -10,7 +10,7 @@ export const NotFound = () => {
       <h2>Not Found</h2>
       <div>The page you were looking for was not found.</div>
       <div>
-        Visit the <A href="">home page</A>
+        Visit the <A href="/">home page</A>
       </div>
     </div>
   );

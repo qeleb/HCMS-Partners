@@ -6,13 +6,13 @@ import styles from '@/components/Navbar/Navbar.module.scss';
 
 export const NavbarItems = () => (
   <>
-    <A href="" end>
+    <A href="/" end>
       HOME
     </A>
-    <A href="why-choose-us">WHY CHOOSE US</A>
-    <A href="services">SERVICES</A>
-    <A href="partners">CLIENTS & PARTNERS</A>
-    <A href="contact">CONTACT US</A>
+    <A href="/why-choose-us">WHY CHOOSE US</A>
+    <A href="/services">SERVICES</A>
+    <A href="/partners">CLIENTS & PARTNERS</A>
+    <A href="/contact">CONTACT US</A>
   </>
 );
 
@@ -24,7 +24,7 @@ export const Navbar = () => {
   return (
     <nav class={`${showMenu() ? styles.show : ''}`}>
       <div class={styles['nav-main']}>
-        <A href="" end>
+        <A href="/" end>
           <img prop:src={iconLogo} alt="HCMS Partners" />
         </A>
 

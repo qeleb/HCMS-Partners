@@ -26,17 +26,17 @@ export const Footer = () => (
     <div class={styles.main}>
       <div>
         <h6>HCMS PARTNERS</h6>
-        <A href="">HOME</A>
-        <A href="why-choose-us">WHY CHOOSE US</A>
-        <A href="services">SERVICES</A>
-        <A href="partners">CLIENTS & PARTNERS</A>
-        <A href="contact">CONTACT US</A>
+        <A href="/">HOME</A>
+        <A href="/why-choose-us">WHY CHOOSE US</A>
+        <A href="/services">SERVICES</A>
+        <A href="/partners">CLIENTS & PARTNERS</A>
+        <A href="/contact">CONTACT US</A>
       </div>
       <div>
         <h6>SERVICES</h6> {/*TODO: Fix services # doc links */}
-        <A href="services">ORACLE HCM CLOUD & EBS SERVICES</A>
-        <A href="services">DEVELOPMENT & INTEGRATION SERVICES</A>
-        <A href="services">STRATEGIC HR SERVICES</A>
+        <A href="/services">ORACLE HCM CLOUD & EBS SERVICES</A>
+        <A href="/services">DEVELOPMENT & INTEGRATION SERVICES</A>
+        <A href="/services">STRATEGIC HR SERVICES</A>
       </div>
       <div>
         <h6>ADDRESS</h6>
@@ -49,7 +49,7 @@ export const Footer = () => (
       </div>
     </div>
     <div class={styles.copyright}>
-      HCMS PARTNERS © 2010 - 2024 • <A href="privacy-policy">PRIVACY POLICY</A>
+      HCMS PARTNERS © 2010 - 2024 • <A href="/privacy-policy">PRIVACY POLICY</A>
     </div>
   </footer>
 );

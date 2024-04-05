@@ -131,7 +131,7 @@ nav {
   }
 
   /* stylelint-disable-next-line order/order */
-  @media screen and (max-width: 1048px) {
+  @media screen and (max-width: 1024px) {
     & > .nav-main {
       padding: 0 max(calc(50% - 620px), 2rem);
 
