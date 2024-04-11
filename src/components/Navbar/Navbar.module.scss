@@ -29,7 +29,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: $navbar-height;
-    padding: 0 max(calc(50% - 620px), 4rem);
+    padding: env(safe-area-inset-top) max(calc(50% - 620px), calc(4rem + env(safe-area-inset-right))) 0
+      max(calc(50% - 620px), calc(4rem + env(safe-area-inset-left)));
     background: #ffffffd0;
     box-shadow: 5px 3px 8px 0 rgba(0, 0, 0, 0.06);
     font-weight: 400;
@@ -106,7 +107,7 @@ nav {
     & > a {
       width: 80%;
       margin: auto;
-      padding: 1rem;
+      padding: min(1rem, 2.5vh);
       text-align: center;
     }
   }
@@ -133,7 +134,8 @@ nav {
   /* stylelint-disable-next-line order/order */
   @media screen and (max-width: 1024px) {
     & > .nav-main {
-      padding: 0 max(calc(50% - 620px), 2rem);
+      padding: env(safe-area-inset-top) max(calc(50% - 620px), calc(2rem + env(safe-area-inset-right))) 0
+        max(calc(50% - 620px), calc(2rem + env(safe-area-inset-left)));
 
       & > button {
         display: block;

@@ -3,7 +3,8 @@
 .section {
   display: flex;
   flex-flow: column;
-  padding: 4rem max(calc(50% - 620px), max(2rem, 5%));
+  padding: 4rem max(calc(50% - 620px), calc(2rem + env(safe-area-inset-right)), 5%) 4rem
+    max(calc(50% - 620px), calc(2rem + env(safe-area-inset-left)), 5%);
 
   & > h2 {
     margin: 0;
@@ -28,6 +29,7 @@
       gap: 1rem;
       justify-content: center;
       align-items: center;
+      max-height: 34vh;
       padding: 1rem;
       color: #fff;
       text-align: center;
@@ -128,7 +130,8 @@
     background: #f0f0f0;
 
     & > span {
-      margin: 1rem 15%;
+      width: clamp(70%, 22rem, 100%);
+      margin: 1rem auto;
       text-align: center;
     }
   }
