@@ -3,7 +3,7 @@
 .section {
   display: flex;
   flex-flow: column;
-  padding: 4rem max(calc(50% - 620px), calc(2rem + env(safe-area-inset-right)), 5%) 4rem
+  padding: 3rem max(calc(50% - 620px), calc(2rem + env(safe-area-inset-right)), 5%) 3rem
     max(calc(50% - 620px), calc(2rem + env(safe-area-inset-left)), 5%);
 
   & > h2 {
@@ -51,7 +51,7 @@
 
   & > .grid {
     display: grid;
-    margin: 1rem auto 4rem;
+    margin: 1rem auto 3.5rem;
 
     & > img {
       width: 100%;
@@ -59,8 +59,9 @@
 
     &.gridServices {
       grid-template: auto / repeat(3, 1fr);
-      gap: 2rem;
-      width: min(54rem, 100%);
+      grid-auto-columns: 1fr;
+      gap: 1.5rem;
+      width: min(50rem, 100%);
 
       & > div {
         display: flex;
@@ -68,9 +69,9 @@
         gap: 2%;
         justify-content: center;
         align-items: center;
-        min-width: 100%;
-        min-height: 100%;
-        padding: 10%;
+        max-height: 70vmin;
+        margin: auto;
+        padding: 8.5%;
         border-radius: 10px;
         background: #fff;
         box-shadow: 2px 3px 7px 0 rgba(0, 0, 0, 0.06);
@@ -164,7 +165,7 @@
       &.gridServices {
         grid-template: repeat(3, 1fr) / none;
         grid-auto-flow: column;
-        max-width: 38rem;
+        max-width: 32rem;
       }
 
       &.gridPartners {
