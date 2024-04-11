@@ -11,7 +11,7 @@ export const Home = () => {
 
   return (
     <>
-      <LabeledBanner bannerImgUrl={bannerNY} label="NEW YORK CITY, USA" />
+      <LabeledBanner bannerImgUrl={bannerNY} bannerLabel="NEW YORK CITY, USA" />
       <SectionAboutUs />
       <SectionServices />
       <SectionGoldPartner />

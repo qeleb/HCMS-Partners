@@ -28,7 +28,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         ecma: 2020,
         compress: { drop_console: true, drop_debugger: true, arguments: true, hoist_funs: true, passes: 3, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true }, //prettier-ignore
         format: { comments: false, wrap_func_args: false },
-        mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed)$/ } }, //prettier-ignore
+        mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed|bannerImgUrl|bannerLabel)$/ } }, //prettier-ignore
       },
       modulePreload: { polyfill: false }, // Delete this line if outputting more than 1 chunk
     },
@@ -80,6 +80,18 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
           brotliSize: true,
           filename: resolve(fileURLToPath(new URL('.', import.meta.url)), 'dist/analyze.html'),
         }),
+      {
+        name: 'vite-plugin-remove-junk',
+        generateBundle: (_options, bundle) => {
+          const out: any = Object.values(bundle).find(x => (x as any)?.isEntry && 'code' in x);
+          out.code = out.code
+            .replace(/const (\w+)=\((\w+)=>\2 instanceof Error\?\2:Error\("string"==typeof \2\?\2:"Unknown error",\{cause:\2\}\)\)\(\2\);throw \1/, 'throw ""')
+            .replace(/if\("POST"!==\w+\.target\.method\.toUpperCase\(\)\)throw Error\("Only POST forms are supported for Actions"\);/, "")
+            .replace(/\(\((\w+),\w+\)=>\{if\(null==\1\)throw Error\("<A> and 'use' router primitives can be only used inside a Route\."\);return \1\}\)\((\w+\(\w+\))\)/, "$2")
+            .replace(/if\(void 0===(\w+)\)throw Error\(\1\+" is not a valid base path"\);/, "")
+            .replace(/if\(void 0===\w+\)throw Error\(`Path '\$\{\w+\}' is not a routable path`\);if\(\w+\.length>=100\)throw Error\("Too many redirects"\);/, ""); //prettier-ignore
+        },
+      } as Plugin,
       {
         name: 'vite-plugin-minify-assets',
         enforce: 'post',

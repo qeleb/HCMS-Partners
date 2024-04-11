@@ -1,6 +1,10 @@
 import bannerUK from '@/assets/banners/bannerUK.jpg';
 import { LabeledBanner } from '@/components/LabeledBanner';
+import { SectionCompanyHistory } from '@/components/Sections/SectionCompanyHistory';
 import { SectionQuestions } from '@/components/Sections/SectionQuestions';
+import { SectionThePartners } from '@/components/Sections/SectionThePartners';
+import { SectionVision } from '@/components/Sections/SectionVision';
+import { SectionWeProvide } from '@/components/Sections/SectionWeProvide';
 import { setPageTitle } from '@/utils/pageTitle';
 
 export const WhyChooseUs = () => {
@@ -8,7 +12,11 @@ export const WhyChooseUs = () => {
 
   return (
     <>
-      <LabeledBanner bannerImgUrl={bannerUK} label="LONDON, UK" />
+      <LabeledBanner bannerImgUrl={bannerUK} bannerLabel="LONDON, UK" />
+      <SectionThePartners />
+      <SectionCompanyHistory />
+      <SectionVision />
+      <SectionWeProvide />
       <SectionQuestions />
     </>
   );

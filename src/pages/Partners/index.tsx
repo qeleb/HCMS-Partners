@@ -10,7 +10,7 @@ export const Partners = () => {
 
   return (
     <>
-      <LabeledBanner bannerImgUrl={bannerSP} label="SINGAPORE" />
+      <LabeledBanner bannerImgUrl={bannerSP} bannerLabel="SINGAPORE" />
       <SectionOurPartners />
       <SectionClientsSample />
       <SectionQuestions />

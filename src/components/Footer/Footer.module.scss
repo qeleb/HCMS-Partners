@@ -109,7 +109,10 @@ footer {
   & > .copyright {
     text-align: center;
     text-wrap: pretty;
-    opacity: 0.7;
+
+    & > span {
+      opacity: 0.7;
+    }
   }
 
   a {
