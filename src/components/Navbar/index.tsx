@@ -30,8 +30,8 @@ export const Navbar = () => {
 
         {/* Mobile Only */}
         <button aria-label="Toggle navigation" onClick={() => setShowMenu(p => !p)}>
-          <svg viewBox="0 0 32 32">
-            <path d="M4 8h24M4 16h24M4 24h24" />
+          <svg viewBox="0 0 8 8">
+            <path d="M1 2h6M1 4h6M1 6h6" />
           </svg>
         </button>
 

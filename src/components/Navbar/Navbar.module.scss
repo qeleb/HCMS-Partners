@@ -54,18 +54,18 @@ nav {
       background: none;
       stroke: #333;
       transition: all 0.15s ease;
-      stroke-width: 2;
+      stroke-width: 0.5;
 
       @media only screen and (hover: hover) {
         &:hover {
-          stroke-width: 3;
+          stroke-width: 0.8;
         }
       }
 
       &:active {
         stroke: #cf0a2c;
         transition-duration: 0s;
-        stroke-width: 4;
+        stroke-width: 1;
       }
 
       & > svg {
