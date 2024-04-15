@@ -1,9 +1,9 @@
-import iconAppsTek from '@/assets/logos_partners/apps-tek.png';
-import iconEIS from '@/assets/logos_partners/eis.png';
-import iconOracle from '@/assets/logos_partners/oracle.png';
-import iconSmartDog from '@/assets/logos_partners/smart-dog-services.png';
-import iconSyntax from '@/assets/logos_partners/syntax.png';
-import iconTRS from '@/assets/logos_partners/technology-resource-services.png';
+import iconAppsTek from '@/assets/logos_partners/apps-tek.webp';
+import iconEIS from '@/assets/logos_partners/eis.webp';
+import iconOracle from '@/assets/logos_partners/oracle.webp';
+import iconSmartDog from '@/assets/logos_partners/smart-dog-services.webp';
+import iconSyntax from '@/assets/logos_partners/syntax.webp';
+import iconTRS from '@/assets/logos_partners/technology-resource-services.webp';
 import styles from '@/components/Sections/Sections.module.scss';
 
 export const SectionOurPartners = () => (

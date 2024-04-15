@@ -106,7 +106,7 @@
   }
 
   &.sectionQuestions {
-    background-image: url('@/assets/cta_bg.jpg');
+    background-image: url('@/assets/cta_bg.webp');
     background-position: center center;
     background-size: cover;
     color: #fff;
@@ -141,6 +141,7 @@
 
         & > svg {
           width: 4.5rem;
+          fill: #fff;
         }
       }
     }

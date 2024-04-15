@@ -17,11 +17,12 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
   return defineConfig({
     envDir: 'env',
     build: {
+      target: 'es2020',
       rollupOptions: {
         output: { entryFileNames: '[hash:6].js', chunkFileNames: '[hash:6].js', assetFileNames: '[hash:6][extname]' },
         treeshake: { propertyReadSideEffects: false, tryCatchDeoptimization: false },
       },
-      target: 'es2020',
+      assetsInlineLimit: 1430,
       minify: 'terser',
       cssMinify: 'lightningcss',
       terserOptions: {

@@ -1,4 +1,4 @@
-import iconOracle from '@/assets/logos_partners/oracle.png';
+import iconOracle from '@/assets/logos_partners/oracle.webp';
 import styles from '@/components/Sections/Sections.module.scss';
 
 export const SectionGoldPartner = () => (
