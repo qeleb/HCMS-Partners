@@ -13,7 +13,7 @@ export const WhyChooseUs = () => {
 
   return (
     <>
-      <LabeledBanner bannerImgUrl={bannerUK} bannerLabel="LONDON, UK" />
+      <LabeledBanner bannerImgUrl={bannerUK} bannerLabel="LONDON, UK" aspectRatio="512/251" />
       <SectionThePartners />
       <SectionCompanyHistory />
       <SectionVision />

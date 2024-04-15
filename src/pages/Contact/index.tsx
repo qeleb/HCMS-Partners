@@ -9,7 +9,7 @@ export const Contact = () => {
 
   return (
     <div class={styles.Contact}>
-      <LabeledBanner bannerImgUrl={bannerHK} bannerLabel="HONG KONG" />
+      <LabeledBanner bannerImgUrl={bannerHK} bannerLabel="HONG KONG" aspectRatio="1024/493" />
       <h2>Contact Us</h2>
       <p>We'd be happy to answer any questions you might have!</p>
       <span>
