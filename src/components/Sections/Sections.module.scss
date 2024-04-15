@@ -55,6 +55,8 @@
 
     & > img {
       width: 100%;
+      max-width: min-content;
+      margin: auto;
     }
 
     &.gridServices {

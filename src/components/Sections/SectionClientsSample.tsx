@@ -30,7 +30,7 @@ export const SectionClientsSample = () => (
     </span>
     <div class={`${styles.grid} ${styles.gridClients}`}>
       <img prop:src={iconDresser} alt="Dresser-Rand" style={{ 'aspect-ratio': '31/4' }} />
-      <img prop:src={iconISS} alt="ISS" style={{ 'aspect-ratio': '8/7', padding: '1.75rem' }} />
+      <img prop:src={iconISS} alt="ISS" style={{ 'aspect-ratio': '8/7' }} />
       <img prop:src={iconGevity} alt="Gevity" style={{ 'aspect-ratio': '127/58' }} />
       <img prop:src={iconLPS} alt="Lender Processing Services" style={{ 'aspect-ratio': '141/80' }} />
       <img prop:src={iconSourceFire} alt="Source Fire" style={{ 'aspect-ratio': '155/56' }} />
@@ -45,7 +45,7 @@ export const SectionClientsSample = () => (
       <img prop:src={iconLincoln} alt="Lincoln Financial Group" style={{ 'aspect-ratio': '155/56' }} />
       <img prop:src={iconLaitram} alt="Laitram" style={{ 'aspect-ratio': '145/44' }} />
       <img prop:src={iconLafayette} alt="Lafayette General Medical Center" style={{ 'aspect-ratio': '143/80' }} />
-      <img prop:src={iconStPetersburg} alt="St. Petersburg" style={{ 'aspect-ratio': '95/78', padding: '1.5rem' }} />
+      <img prop:src={iconStPetersburg} alt="St. Petersburg" style={{ 'aspect-ratio': '145/119' }} />
       <img prop:src={iconAtrium} alt="Atrium Windows and Doors" style={{ 'aspect-ratio': '70/27' }} />
       <img prop:src={iconOhioHealth} alt="Ohio Health" style={{ 'aspect-ratio': '155/36' }} />
       <img prop:src={iconStuller} alt="Stuller" style={{ 'aspect-ratio': '155/58' }} />
