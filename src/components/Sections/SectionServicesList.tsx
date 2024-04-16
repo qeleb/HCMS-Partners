@@ -1,7 +1,7 @@
 import styles from '@/components/Sections/Sections.module.scss';
 
 export const SectionServicesList = () => (
-  <section class={`${styles.section} ${styles.sectionServicesList}`}>
+  <section class={`${styles.section} ${styles.sectionDim}`}>
     <h2 id="hcm-and-ebs">Oracle HCM Cloud & EBS Services</h2>
     <div class={`${styles.grid} ${styles.gridServices}`}>
       <div>

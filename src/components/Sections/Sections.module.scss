@@ -49,6 +49,27 @@
     text-align: center;
   }
 
+  & > .founders {
+    & > div {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 2px 3px 7px 0 rgba(0, 0, 0, 0.06);
+      text-align: center;
+
+      & > img {
+        border-radius: 50%;
+        aspect-ratio: 1;
+      }
+
+      & > h5 {
+        color: #cf0a2c;
+        font-size: 18px;
+      }
+    }
+  }
+
   & > .grid {
     display: grid;
     margin: 1rem auto 3.5rem;
@@ -149,7 +170,7 @@
     }
   }
 
-  &.sectionServicesList {
+  &.sectionDim {
     background: #f0f0f0;
   }
 
