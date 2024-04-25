@@ -29,7 +29,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         ecma: 2020,
         compress: { drop_console: true, drop_debugger: true, arguments: true, hoist_funs: true, passes: 3, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true }, //prettier-ignore
         format: { comments: false, wrap_func_args: false },
-        mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed|bannerImgUrl|bannerLabel)$/ } }, //prettier-ignore
+        mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed|intent|singleFlight|bannerImgUrl|bannerLabel|aspectRatio)$/ } }, //prettier-ignore
       },
       modulePreload: { polyfill: false }, // Delete this line if outputting more than 1 chunk
     },
@@ -84,13 +84,25 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       {
         name: 'vite-plugin-remove-junk',
         generateBundle: (_options, bundle) => {
-          const out: any = Object.values(bundle).find(x => (x as any)?.isEntry && 'code' in x);
-          out.code = out.code
+          const o: any = Object.values(bundle).find(x => (x as any)?.isEntry && 'code' in x);
+          o.code = o.code
             .replace(/const (\w+)=\((\w+)=>\2 instanceof Error\?\2:Error\("string"==typeof \2\?\2:"Unknown error",\{cause:\2\}\)\)\(\2\);throw \1/, 'throw ""')
             .replace(/if\("POST"!==\w+\.target\.method\.toUpperCase\(\)\)throw Error\("Only POST forms are supported for Actions"\);/, "")
             .replace(/\(\((\w+),\w+\)=>\{if\(null==\1\)throw Error\("<A> and 'use' router primitives can be only used inside a Route\."\);return \1\}\)\((\w+\(\w+\))\)/, "$2")
             .replace(/if\(void 0===(\w+)\)throw Error\(\1\+" is not a valid base path"\);/, "")
             .replace(/if\(void 0===\w+\)throw Error\(`Path '\$\{\w+\}' is not a routable path`\);if\(\w+\.length>=100\)throw Error\("Too many redirects"\);/, ""); //prettier-ignore
+
+          if (o.code.split('formnovalidate').length < 4) o.code = o.code.replace(',formnovalidate:{$:"formNoValidate",BUTTON:1,INPUT:1}', ''); //prettier-ignore
+          if (o.code.split('ismap').length < 4) o.code = o.code.replace(',ismap:{$:"isMap",IMG:1}', '');
+          if (o.code.split('nomodule').length < 4) o.code = o.code.replace(',nomodule:{$:"noModule",SCRIPT:1}', '');
+          if (o.code.split('playsinline').length < 4) o.code = o.code.replace(',playsinline:{$:"playsInline",VIDEO:1}', ''); //prettier-ignore
+          if (o.code.split('readonly').length < 4) o.code = o.code.replace(',readonly:{$:"readOnly",INPUT:1,TEXTAREA:1}', ''); //prettier-ignore
+          (o.code as string).match(/=new Set\(\[["a-zA-Z,]*\]\)/g)?.forEach(set =>
+            set.match(/"[a-z]{2}[a-zA-Z]+"/g)?.forEach(prop => {
+              if (o.code.split(prop.replace(/["']/g, '')).length < 3)
+                o.code = o.code.replace(`${prop},`, '').replace(`,${prop}`, '');
+            })
+          );
         },
       } as Plugin,
       {

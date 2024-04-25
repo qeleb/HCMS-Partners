@@ -5,7 +5,7 @@ export const LabeledBanner = (props: { bannerImgUrl: string; bannerLabel: string
     <span>{/* @once */ props.bannerLabel}</span>
     <img
       prop:src={/* @once */ props.bannerImgUrl}
-      alt={/* @once */ props.bannerLabel}
+      prop:alt={/* @once */ props.bannerLabel}
       style={/* @once */ { 'aspect-ratio': props.aspectRatio }}
     />
   </div>
