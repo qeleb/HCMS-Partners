@@ -33,12 +33,13 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       },
       modulePreload: { polyfill: false }, // Delete this line if outputting more than 1 chunk
     },
+    css: { devSourcemap: true, modules: { generateScopedName: (n, f) => `${f.replace(/(^.*\/|\..+$)/g, '')}_${n}` } },
     plugins: [
       {
         name: 'vite-plugin-optimize-solid-css-modules',
         enforce: 'pre',
         transform(code, id) {
-          if (/\.tsx$/.test(id))
+          if (/\.[tj]sx$/.test(id))
             code = code.replace(
               /class=\{([a-zA-Z '"`[\].-]+|(?:`(?:\$\{[a-zA-Z '"`[\].-]+\}\s*)+)`)\}/g, // eslint-disable-line regexp/no-useless-non-capturing-group
               'class={/*@once*/$1}' //TODO: Tighten regex to avoid store. Allow 1 ./space?
