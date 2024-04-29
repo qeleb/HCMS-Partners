@@ -1,12 +1,11 @@
+import { ImageSample } from '@/components/ImageSample';
 import styles from '@/components/LabeledBanner/LabeledBanner.module.scss';
 
-export const LabeledBanner = (props: { bannerImgUrl: string; bannerLabel: string; aspectRatio: string }) => (
+const enum PROPS { IMG_URL, LABEL, ASPECT_RATIO } //prettier-ignore
+
+export const LabeledBanner = (props: [ImgUrl: string, label: string, aspectRatio: string]) => (
   <div class={styles.LabeledBanner}>
-    <span>{/* @once */ props.bannerLabel}</span>
-    <img
-      prop:src={/* @once */ props.bannerImgUrl}
-      prop:alt={/* @once */ props.bannerLabel}
-      style={/* @once */ { 'aspect-ratio': props.aspectRatio }}
-    />
+    <span>{/* @once */ props[PROPS.LABEL]}</span>
+    <ImageSample {...[props[PROPS.IMG_URL], props[PROPS.LABEL], props[PROPS.ASPECT_RATIO]]} />
   </div>
 );

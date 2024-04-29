@@ -10,7 +10,7 @@ export const Services = () => {
 
   return (
     <>
-      <LabeledBanner bannerImgUrl={bannerMA} bannerLabel="KUALA LUMPUR, MALAYSIA" aspectRatio="1024/573" />
+      <LabeledBanner {...[bannerMA, 'KUALA LUMPUR, MALAYSIA', '1024/573']} />
       <SectionServices />
       <SectionServicesList />
       <SectionQuestions />

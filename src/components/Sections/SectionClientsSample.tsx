@@ -18,6 +18,7 @@ import iconSourceFire from '@/assets/logos_clients/source-fire.webp';
 import iconStPetersburg from '@/assets/logos_clients/st-petersburg.webp';
 import iconStuller from '@/assets/logos_clients/stuller.webp';
 import iconUniversityHospitals from '@/assets/logos_clients/university-hospitals.webp';
+import { ImageSample } from '@/components/ImageSample';
 import styles from '@/components/Sections/Sections.module.scss';
 
 export const SectionClientsSample = () => (
@@ -29,26 +30,26 @@ export const SectionClientsSample = () => (
       level of expertise that few can match.
     </span>
     <div class={`${styles.grid} ${styles.gridClients}`}>
-      <img prop:src={iconDresser} alt="Dresser-Rand" style={{ 'aspect-ratio': '31/4' }} />
-      <img prop:src={iconISS} alt="ISS" style={{ 'aspect-ratio': '8/7' }} />
-      <img prop:src={iconGevity} alt="Gevity" style={{ 'aspect-ratio': '127/58' }} />
-      <img prop:src={iconLPS} alt="Lender Processing Services" style={{ 'aspect-ratio': '141/80' }} />
-      <img prop:src={iconSourceFire} alt="Source Fire" style={{ 'aspect-ratio': '155/56' }} />
-      <img prop:src={iconFIS} alt="Fidelity National Information Services" style={{ 'aspect-ratio': '63/31' }} />
-      <img prop:src={iconUniversityHospitals} alt="University Hospitals" style={{ 'aspect-ratio': '31/14' }} />
-      <img prop:src={iconDealerTire} alt="Dealer Tire" style={{ 'aspect-ratio': '155/29' }} />
-      <img prop:src={iconBlackKnight} alt="Black Knight" style={{ 'aspect-ratio': '31/8' }} />
-      <img prop:src={iconAllscripts} alt="Allscripts" style={{ 'aspect-ratio': '155/34' }} />
-      <img prop:src={iconETrade} alt="E-Trade Financial" style={{ 'aspect-ratio': '300/79' }} />
-      <img prop:src={iconFidelity} alt="Fidelity National Financial" style={{ 'aspect-ratio': '129/46' }} />
-      <img prop:src={iconServiceLink} alt="Service Link" style={{ 'aspect-ratio': '152/43' }} />
-      <img prop:src={iconLincoln} alt="Lincoln Financial Group" style={{ 'aspect-ratio': '155/56' }} />
-      <img prop:src={iconLaitram} alt="Laitram" style={{ 'aspect-ratio': '145/44' }} />
-      <img prop:src={iconLafayette} alt="Lafayette General Medical Center" style={{ 'aspect-ratio': '143/80' }} />
-      <img prop:src={iconStPetersburg} alt="St. Petersburg" style={{ 'aspect-ratio': '145/119' }} />
-      <img prop:src={iconAtrium} alt="Atrium Windows and Doors" style={{ 'aspect-ratio': '70/27' }} />
-      <img prop:src={iconOhioHealth} alt="Ohio Health" style={{ 'aspect-ratio': '155/36' }} />
-      <img prop:src={iconStuller} alt="Stuller" style={{ 'aspect-ratio': '155/58' }} />
+      <ImageSample {...[iconDresser, 'Dresser-Rand', '31/4']} />
+      <ImageSample {...[iconISS, 'ISS', '8/7']} />
+      <ImageSample {...[iconGevity, 'Gevity', '127/58']} />
+      <ImageSample {...[iconLPS, 'Lender Processing Services', '141/80']} />
+      <ImageSample {...[iconSourceFire, 'Source Fire', '155/56']} />
+      <ImageSample {...[iconFIS, 'Fidelity National Information Services', '63/31']} />
+      <ImageSample {...[iconUniversityHospitals, 'University Hospitals', '31/14']} />
+      <ImageSample {...[iconDealerTire, 'Dealer Tire', '155/29']} />
+      <ImageSample {...[iconBlackKnight, 'Black Knight', '31/8']} />
+      <ImageSample {...[iconAllscripts, 'Allscripts', '155/34']} />
+      <ImageSample {...[iconETrade, 'E-Trade Financial', '300/79']} />
+      <ImageSample {...[iconFidelity, 'Fidelity National Financial', '129/46']} />
+      <ImageSample {...[iconServiceLink, 'Service Link', '152/43']} />
+      <ImageSample {...[iconLincoln, 'Lincoln Financial Group', '155/56']} />
+      <ImageSample {...[iconLaitram, 'Laitram', '145/44']} />
+      <ImageSample {...[iconLafayette, 'Lafayette General Medical Center', '143/80']} />
+      <ImageSample {...[iconStPetersburg, 'St. Petersburg', '145/119']} />
+      <ImageSample {...[iconAtrium, 'Atrium Windows and Doors', '70/27']} />
+      <ImageSample {...[iconOhioHealth, 'Ohio Health', '155/36']} />
+      <ImageSample {...[iconStuller, 'Stuller', '155/58']} />
     </div>
   </section>
 );

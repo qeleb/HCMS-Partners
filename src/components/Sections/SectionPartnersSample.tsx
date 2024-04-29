@@ -4,6 +4,7 @@ import iconOracle from '@/assets/logos_partners/oracle.webp';
 import iconSmartDog from '@/assets/logos_partners/smart-dog-services.webp';
 import iconSyntax from '@/assets/logos_partners/syntax.webp';
 import iconTRS from '@/assets/logos_partners/technology-resource-services.webp';
+import { ImageSample } from '@/components/ImageSample';
 import styles from '@/components/Sections/Sections.module.scss';
 
 export const SectionPartnersSample = () => (
@@ -11,12 +12,12 @@ export const SectionPartnersSample = () => (
     <h2>Our Partners</h2>
     <p>We have established partnerships with key players in the HCM and Oracle markets including:</p>
     <div class={`${styles.grid} ${styles.gridPartners}`}>
-      <img prop:src={iconOracle} alt="Oracle Gold Partner" style={{ 'aspect-ratio': '44/17' }} />
-      <img prop:src={iconSyntax} alt="Syntax Enterprise Cloud" style={{ 'aspect-ratio': '213/62' }} />
-      <img prop:src={iconTRS} alt="Technology Resource Services" style={{ 'aspect-ratio': '253/74' }} />
-      <img prop:src={iconSmartDog} alt="Smart Dog Services" style={{ 'aspect-ratio': '49/17' }} />
-      <img prop:src={iconEIS} alt="Enterprise Integration Solutions" style={{ 'aspect-ratio': '88/87' }} />
-      <img prop:src={iconAppsTek} alt="Apps Tek" style={{ 'aspect-ratio': '77/47' }} />
+      <ImageSample {...[iconOracle, 'Oracle Gold Partner', '44/17']} />
+      <ImageSample {...[iconSyntax, 'Syntax Enterprise Cloud', '213/62']} />
+      <ImageSample {...[iconTRS, 'Technology Resource Services', '253/74']} />
+      <ImageSample {...[iconSmartDog, 'Smart Dog Services', '49/17']} />
+      <ImageSample {...[iconEIS, 'Enterprise Integration Solutions', '88/87']} />
+      <ImageSample {...[iconAppsTek, 'Apps Tek', '77/47']} />
     </div>
   </section>
 );
