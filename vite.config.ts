@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { minifyTemplateLiterals } from 'rollup-plugin-minify-template-literals';
 import { visualizer } from 'rollup-plugin-visualizer';
+import injectPreload from 'unplugin-inject-preload/vite';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import { checker } from 'vite-plugin-checker';
 import { createHtmlPlugin } from 'vite-plugin-html';
@@ -71,6 +72,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
           removeStyleLinkTypeAttributes: true, sortAttributes: true, useShortDoctype: true,
         }, //prettier-ignore
       }),
+      injectPreload({ files: [{ entryMatch: /logo\.svg$/ }], injectTo: 'head' }),
       optimizeCssModules(),
       sassDts({ enabledMode: ['development', 'production'], prettierFilePath: resolve(fileURLToPath(new URL('.', import.meta.url)), '.prettierrc') }), //prettier-ignore
       mode === 'production' && minifyTemplateLiterals(),
