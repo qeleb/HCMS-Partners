@@ -1,4 +1,4 @@
-import { Router } from '@solidjs/router';
+import { type RouteDefinition, Router } from '@solidjs/router';
 import { render } from 'solid-js/web';
 import { App } from '@/App';
 import { Contact } from '@/pages/Contact';
@@ -25,22 +25,16 @@ declare module 'solid-js' {
   }
 }
 
-/* Render App & Routes */
-render(
-  () => (
-    <Router root={App}>
-      {
-        [
-          { path: '/', component: Home },
-          { path: '/why-choose-us', component: WhyChooseUs },
-          { path: '/services', component: Services },
-          { path: '/partners', component: Partners },
-          { path: '/contact', component: Contact },
-          { path: '/privacy-policy', component: PrivacyPolicy },
-          { path: '*', component: NotFound },
-        ] as any
-      }
-    </Router>
-  ),
-  document.body
-);
+/* Routes */
+const routes: RouteDefinition[] = [
+  { path: '/', component: Home },
+  { path: '/why-choose-us', component: WhyChooseUs },
+  { path: '/services', component: Services },
+  { path: '/partners', component: Partners },
+  { path: '/contact', component: Contact },
+  { path: '/privacy-policy', component: PrivacyPolicy },
+  { path: '*', component: NotFound },
+];
+
+/* Render */
+render(() => <Router root={App}>{routes as any}</Router>, document.body);
