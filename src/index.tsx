@@ -1,4 +1,4 @@
-import { Route, Router } from '@solidjs/router';
+import { Router } from '@solidjs/router';
 import { render } from 'solid-js/web';
 import { App } from '@/App';
 import { Contact } from '@/pages/Contact';
@@ -29,13 +29,17 @@ declare module 'solid-js' {
 render(
   () => (
     <Router root={App}>
-      <Route path="/" component={Home} />
-      <Route path="/why-choose-us" component={WhyChooseUs} />
-      <Route path="/services" component={Services} />
-      <Route path="/partners" component={Partners} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/privacy-policy" component={PrivacyPolicy} />
-      <Route path="*" component={NotFound} />
+      {
+        [
+          { path: '/', component: Home },
+          { path: '/why-choose-us', component: WhyChooseUs },
+          { path: '/services', component: Services },
+          { path: '/partners', component: Partners },
+          { path: '/contact', component: Contact },
+          { path: '/privacy-policy', component: PrivacyPolicy },
+          { path: '*', component: NotFound },
+        ] as any
+      }
     </Router>
   ),
   document.body
