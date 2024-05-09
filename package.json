@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-typescript": "^7.24.5",
-    "@types/node": "^20.12.8",
+    "@types/node": "^20.12.11",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "eslint": "^8.57.0",
@@ -57,7 +57,7 @@
     "prettier": "^3.2.5",
     "rollup-plugin-minify-template-literals": "^1.1.7",
     "rollup-plugin-visualizer": "^5.12.0",
-    "sass": "^1.76.0",
+    "sass": "^1.77.0",
     "stylelint": "^16.5.0",
     "stylelint-config-hudochenkov": "^10.0.0",
     "stylelint-config-recommended-scss": "^14.0.0",
@@ -81,5 +81,5 @@
   "resolutions": {
     "svgo": "^3.2.0"
   },
-  "packageManager": "yarn@3.7.0"
+  "packageManager": "yarn@3.8.2"
 }

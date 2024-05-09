@@ -28,7 +28,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       cssMinify: 'lightningcss',
       terserOptions: {
         ecma: 2020,
-        compress: { drop_console: true, drop_debugger: true, arguments: true, hoist_funs: true, passes: 3, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true }, //prettier-ignore
+        compress: { drop_console: true, drop_debugger: true, arguments: true, hoist_funs: true, passes: 4, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true }, //prettier-ignore
         format: { comments: false, wrap_func_args: false },
         mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed|intent|singleFlight)$/ } }, //prettier-ignore
       },
@@ -40,7 +40,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         name: 'vite-plugin-optimize-solid-css-modules',
         enforce: 'pre',
         transform(code, id) {
-          if (/\.[tj]sx$/.test(id))
+          if (/\.[mc]?[tj]sx$/.test(id))
             code = code.replace(
               /class=\{([a-zA-Z '"`[\].-]+|(?:`(?:\$\{[a-zA-Z '"`[\].-]+\}\s*)+)`)\}/g, // eslint-disable-line regexp/no-useless-non-capturing-group
               'class={/*@once*/$1}' //TODO: Tighten regex to avoid store. Allow 1 ./space?
@@ -86,23 +86,31 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         }),
       {
         name: 'vite-plugin-remove-junk',
-        generateBundle: (_options, bundle) => {
+        generateBundle(_options, bundle) {
           const o: any = Object.values(bundle).find(x => (x as any)?.isEntry && 'code' in x);
           o.code = o.code
-          .replace(/const ([$\w]+)=\(([$\w]+)=>\2 instanceof Error\?\2:Error\("string"==typeof \2\?\2:"Unknown error",\{cause:\2\}\)\)\(\2\);throw \1/, 'throw ""')
-          .replace(/if\("POST"!==\w+\.target\.method\.toUpperCase\(\)\)throw Error\("Only POST forms are supported for Actions"\);/, "")
-          .replace(/\(\(([$\w]+),[$\w]+\)=>\{if\(null==\1\)throw Error\("Make sure your app is wrapped in a <Router \/>"\);return \1\}\)\(([$\w]+\([$\w]+\))\)/, "$2")
-          .replace(/\(\(([$\w]+),[$\w]+\)=>\{if\(null==\1\)throw Error\("<A> and 'use' router primitives can be only used inside a Route\."\);return \1\}\)\(([$\w]+\([$\w]+\))\)/, "$2")
-          .replace(/if\(void 0===([$\w]+)\)throw Error\(\1\+" is not a valid base path"\);/, "")
-          .replace(/if\(void 0===[$\w]+\)throw Error\(`Path '\$\{[$\w]+\}' is not a routable path`\);if\([$\w]+\.length>=100\)throw Error\("Too many redirects"\);/, ""); //prettier-ignore
-
+            // Optional Chaining
+            .replace(/(?<=[;:{}(),[\]]|return[ !]|throw[ !]|=>|[\w$ ]=)([_a-zA-Z$][\w$]*)(\??)\.([_a-zA-Z$][\w$]*)&&\1\??\.\3\??\.?([_a-zA-Z$][\w$]*|\(|\[)/g, '$1$2.$3?.$4') // a.b&&a.b.c ==> a?.b?.c
+            .replace(/(?<=[;:{}(),[\]]|return[ !]|throw[ !]|=>|[\w$ ]=)([_a-zA-Z$][\w$]*(?:\??\.[_a-zA-Z$][\w$]*)*)&&\1(?:(\()|(\??\.))/g, '$1?.$2') // a&&a.b ==> a?.b //TODO: Improve
+            // SolidJS
+            .replace(/const ([$\w]+)=\(([$\w]+)=>\2 instanceof Error\?\2:Error\("string"==typeof \2\?\2:"Unknown error",\{cause:\2\}\)\)\(\2\);throw \1/, 'throw 0')
+            // Router
+            .replace(/`,[$\w]+=[$\w]+=>Stale read from <\$\{e\}>.`/, '')
+            .replace(/if\(![$\w]+\([$\w]+\)\)throw [$\w]+\("Show"\);/, '')
+            .replace(/if\("POST"!==\w+\.target\.method\.toUpperCase\(\)\)throw Error\("Only POST forms are supported for Actions"\);/, "")
+            .replace(/\(\(([$\w]+),[$\w]+\)=>\{if\(null==\1\)throw Error\("Make sure your app is wrapped in a <Router \/>"\);return \1\}\)\(([$\w]+\([$\w]+\))\)/, "$2")
+            .replace(/\(\(([$\w]+),[$\w]+\)=>\{if\(null==\1\)throw Error\("<A> and 'use' router primitives can be only used inside a Route\."\);return \1\}\)\(([$\w]+\([$\w]+\))\)/, "$2")
+            .replace(/if\(void 0===([$\w]+)\)throw Error\(\1\+" is not a valid base path"\);/, "")
+            .replace(/if\(void 0===[$\w]+\)throw Error\(`Path '\$\{[$\w]+\}' is not a routable path`\);if\([$\w]+\.length>=100\)throw Error\("Too many redirects"\);/, "")
+            // Not using `ref`, `on:`, or `oncapture:`
+            .replace(/if\("ref"===([\w$]+)\)([\w$]+)\|\|([\w$]+)\(([\w$]+)\);else if\("on:"===\1\.slice\(0,3\)\)\{const ([\w$]+)=\1\.slice\(3\);([\w$]+)&&\4\.removeEventListener\(\5,\6\),\3&&\4\.addEventListener\(\5,\3\)\}else if\("oncapture:"===\1\.slice\(0,10\)\)\{const \5=\1\.slice\(10\);\6&&\4\.removeEventListener\(\5,\6,!0\),\3&&\4\.addEventListener\(\5,\3,!0\)\}else /, '') //prettier-ignore
           if (o.code.split('formnovalidate').length < 4) o.code = o.code.replace(',formnovalidate:{$:"formNoValidate",BUTTON:1,INPUT:1}', ''); //prettier-ignore
           if (o.code.split('ismap').length < 4) o.code = o.code.replace(',ismap:{$:"isMap",IMG:1}', '');
           if (o.code.split('nomodule').length < 4) o.code = o.code.replace(',nomodule:{$:"noModule",SCRIPT:1}', '');
           if (o.code.split('playsinline').length < 4) o.code = o.code.replace(',playsinline:{$:"playsInline",VIDEO:1}', ''); //prettier-ignore
           if (o.code.split('readonly').length < 4) o.code = o.code.replace(',readonly:{$:"readOnly",INPUT:1,TEXTAREA:1}', ''); //prettier-ignore
-          (o.code as string).match(/=new Set\(\[["a-zA-Z,]*\]\)/g)?.forEach(set =>
-            set.match(/"[a-z]{2}[a-zA-Z]+"/g)?.forEach(prop => {
+          (o.code as string).match(/(?<==new Set\(\[)(?:"[a-z]{2}[a-zA-Z]{2,}",?)+\]\)/g)?.forEach(set =>
+            set.match(/"[a-z]{2}[a-zA-Z]{2,}"/g)?.forEach(prop => {
               if (o.code.split(prop.replace(/["']/g, '')).length < 3)
                 o.code = o.code.replace(`${prop},`, '').replace(`,${prop}`, '');
             })
@@ -112,11 +120,11 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       {
         name: 'vite-plugin-minify-assets',
         enforce: 'post',
-        writeBundle: ({ dir }) => void setTimeout(() => {
+        writeBundle({ dir }) {
             const files = readdirSync(dir!);
             files.filter(x => x.endsWith('.json')).forEach(x => write(`${dir}/${x}`, JSON.stringify(JSON.parse(read(`${dir}/${x}`, 'utf-8'))), { encoding: 'utf-8' }))
             files.filter(x => x.endsWith('.css') || x.endsWith('.js')).forEach(x => write(`${dir}/${x}`, read(`${dir}/${x}`, 'utf-8').trim(), { encoding: 'utf-8' }))
-        }), //prettier-ignore
+        }, //prettier-ignore
       } as Plugin,
     ].filter(Boolean),
     resolve: { alias: { '@': resolve(fileURLToPath(new URL('.', import.meta.url)), 'src') }, dedupe: ['solid-js'] },
