@@ -97,7 +97,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
             // SolidJS
             .replace(/const ([$\w]+)=\(([$\w]+)=>\2 instanceof Error\?\2:Error\("string"==typeof \2\?\2:"Unknown error",\{cause:\2\}\)\)\(\2\);throw \1/, 'throw 0')
             // Router
-            .replace(/`,[$\w]+=[$\w]+=>Stale read from <\$\{e\}>.`/, '')
+            .replace(/,[$\w]+=([$\w]+)=>`Stale read from <\$\{\1\}>\.`/, '')
             .replace(/if\(![$\w]+\([$\w]+\)\)throw [$\w]+\("Show"\);/, '')
             .replace(/if\("POST"!==\w+\.target\.method\.toUpperCase\(\)\)throw Error\("Only POST forms are supported for Actions"\);/, "")
             .replace(/\(\(([$\w]+),[$\w]+\)=>\{if\(null==\1\)throw Error\("Make sure your app is wrapped in a <Router \/>"\);return \1\}\)\(([$\w]+\([$\w]+\))\)/, "$2")
