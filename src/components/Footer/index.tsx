@@ -12,7 +12,7 @@ export const Footer = () => (
       </div>
       <span>
         CONNECT WITH US
-        <a href="https://x.com/HCMExperts" aria-label="HCMHS Partners on X">
+        <a href="https://x.com/HCMExperts" aria-label="HCMS Partners on X">
           <svg viewBox="0 0 300 300.3">
             <path d="M179 127 290 0h-26l-97 110L89 0H0l117 167L0 300h26l103-116 82 116h89M36 20h41l187 262h-41" />
           </svg>
