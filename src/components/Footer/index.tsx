@@ -1,6 +1,7 @@
 import { A } from '@solidjs/router';
 import { EmailAddress, PhoneNumber, StreetAddress } from '@/components/ContactInfo';
 import styles from '@/components/Footer/Footer.module.scss';
+import { NavbarItems } from '@/components/Navbar';
 
 export const Footer = () => (
   <footer>
@@ -26,11 +27,7 @@ export const Footer = () => (
     <div class={styles.main}>
       <div>
         <h6>HCMS PARTNERS</h6>
-        <A href="/">HOME</A>
-        <A href="/why-choose-us">WHY CHOOSE US</A>
-        <A href="/services">SERVICES</A>
-        <A href="/partners">CLIENTS & PARTNERS</A>
-        <A href="/contact">CONTACT US</A>
+        <NavbarItems />
       </div>
       <div>
         <h6>SERVICES</h6>
