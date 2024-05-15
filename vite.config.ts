@@ -1,3 +1,5 @@
+/* eslint-disable regexp/no-super-linear-backtracking */
+
 import { readFileSync as read, readdirSync, writeFileSync as write } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,13 +30,13 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       cssMinify: 'lightningcss',
       terserOptions: {
         ecma: 2020,
-        compress: { drop_console: true, drop_debugger: true, arguments: true, hoist_funs: true, passes: 4, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true }, //prettier-ignore
+        compress: { arguments: true, booleans_as_integers: true, drop_console: true, hoist_funs: true, passes: 4, pure_new: true, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true } as any, //prettier-ignore
         format: { comments: false, wrap_func_args: false },
         mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed|intent|singleFlight)$/ } }, //prettier-ignore
       },
       modulePreload: { polyfill: false }, // Delete this line if outputting more than 1 chunk
     },
-    css: { devSourcemap: true, modules: { generateScopedName: (n, f) => `${f.replace(/(^.*\/|\..+$)/g, '')}_${n}` } },
+    css: { devSourcemap: true },
     plugins: [
       {
         name: 'vite-plugin-optimize-solid-css-modules',
@@ -92,8 +94,10 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
             // Window object
             .replace(/window\.([a-z]{3}[a-zA-Z]*)/g, '$1')
             // Optional chaining
+            .replace(/(?<=[;:{}(),[\]]|return[ !]|throw[ !]|=>|[\w$ ]=)([_a-zA-Z$][\w$]*)&&\1\??\.?([_a-zA-Z$][\w$]*|\(|\[)/g, '$1?.$2') // a&&b ==> a?.b
+            .replace(/(?<=[;:{}(),[\]]|return[ !]|throw[ !]|=>|[\w$ ]=)([_a-zA-Z$][\w$]*)\[([_a-zA-Z$][\w$]*)\]&&\1\[\2\]\??\.?([_a-zA-Z$][\w$]*|\(|\[)/g, '$1[$2]?.$3') // a[b]&&a[b].c ==> a[b]?.c
             .replace(/(?<=[;:{}(),[\]]|return[ !]|throw[ !]|=>|[\w$ ]=)([_a-zA-Z$][\w$]*)(\??)\.([_a-zA-Z$][\w$]*)&&\1\??\.\3\??\.?([_a-zA-Z$][\w$]*|\(|\[)/g, '$1$2.$3?.$4') // a.b&&a.b.c ==> a?.b?.c
-            .replace(/(?<=[;:{}(),[\]]|return[ !]|throw[ !]|=>|[\w$ ]=)([_a-zA-Z$][\w$]*(?:\??\.[_a-zA-Z$][\w$]*)*)&&\1(?:(\()|(\??\.))/g, '$1?.$2') // a&&a.b ==> a?.b //TODO: Improve
+            .replace(/(?<=[;:{}(),[\]]|return[ !]|throw[ !]|=>|[\w$ ]=)([_a-zA-Z$][\w$]*)(\??)\.([_a-zA-Z$][\w$]*)(\??)\.?([_a-zA-Z$][\w$]*)&&\1\2\.\3\.\5\.?([_a-zA-Z$][\w$]*|\(|\[)/g, '$1$2.$3$4.$5?.$6') // a.b.c&&a.b.c.d ==> a?.b?.c?.d
             // Solid
             .replace(/const ([$\w]+)=\(([$\w]+)=>\2 instanceof Error\?\2:Error\("string"==typeof \2\?\2:"Unknown error",\{cause:\2\}\)\)\(\2\);throw \1/, 'throw 0')
             .replace(/,[$\w]+=([$\w]+)=>`Stale read from <\$\{\1\}>\.`/, '')
@@ -105,7 +109,9 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
             .replace(/if\(void 0===([$\w]+)\)throw Error\(\1\+" is not a valid base path"\);/, "")
             .replace(/if\(void 0===[$\w]+\)throw Error\(`Path '\$\{[$\w]+\}' is not a routable path`\);if\([$\w]+\.length>=100\)throw Error\("Too many redirects"\);/, "")
             // Not using `ref`, `on:`, or `oncapture:`
-            .replace(/if\("ref"===([\w$]+)\)([\w$]+)\|\|([\w$]+)\(([\w$]+)\);else if\("on:"===\1\.slice\(0,3\)\)\{const ([\w$]+)=\1\.slice\(3\);([\w$]+)&&\4\.removeEventListener\(\5,\6\),\3&&\4\.addEventListener\(\5,\3\)\}else if\("oncapture:"===\1\.slice\(0,10\)\)\{const \5=\1\.slice\(10\);\6&&\4\.removeEventListener\(\5,\6,!0\),\3&&\4\.addEventListener\(\5,\3,!0\)\}else /, '') //prettier-ignore
+            .replace(/if\("ref"===([\w$]+)\)([\w$]+)\|\|([\w$]+)\(([\w$]+)\);else if\("on:"===\1\.slice\(0,3\)\)\{const ([\w$]+)=\1\.slice\(3\);([\w$]+)&&\4\.removeEventListener\(\5,\6\),\3&&\4\.addEventListener\(\5,\3\)\}else if\("oncapture:"===\1\.slice\(0,10\)\)\{const \5=\1\.slice\(10\);\6&&\4\.removeEventListener\(\5,\6,(?:true|1|!0)\),\3&&\4\.addEventListener\(\5,\3,(?:true|1|!0)\)\}else /, '')
+            // Double equals
+            .replace(/(?<!0)"===/g, '"=='); //prettier-ignore
           if (o.code.split('formnovalidate').length < 4) o.code = o.code.replace(',formnovalidate:{$:"formNoValidate",BUTTON:1,INPUT:1}', ''); //prettier-ignore
           if (o.code.split('ismap').length < 4) o.code = o.code.replace(',ismap:{$:"isMap",IMG:1}', '');
           if (o.code.split('nomodule').length < 4) o.code = o.code.replace(',nomodule:{$:"noModule",SCRIPT:1}', '');
