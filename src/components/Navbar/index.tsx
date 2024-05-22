@@ -22,7 +22,7 @@ export const Navbar = () => {
   useBeforeLeave(() => setShowMenu(false));
 
   return (
-    <nav class={`${showMenu() ? styles.show : ''}`}>
+    <nav class={showMenu() ? styles.show : ''}>
       <div class={styles['nav-main']}>
         <A href="/" end>
           <img prop:src={iconLogo} alt="HCMS Partners" />
