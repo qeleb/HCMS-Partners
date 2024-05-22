@@ -109,6 +109,8 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
             .replace(/\(\(([$\w]+),[$\w]+\)=>\{if\(null==\1\)throw Error\("<A> and 'use' router primitives can be only used inside a Route\."\);return \1\}\)\(([$\w]+\([$\w]+\))\)/, "$2")
             .replace(/if\(void 0===([$\w]+)\)throw Error\(\1\+" is not a valid base path"\);/, "")
             .replace(/if\(void 0===[$\w]+\)throw Error\(`Path '\$\{[$\w]+\}' is not a routable path`\);if\([$\w]+\.length>=100\)throw Error\("Too many redirects"\);/, "")
+            // Not using `style`, `classList`
+            .replace(/if\(["']style["']===([$\w]+)\)return\(\(([$\w]+),\1,([$\w]+)\)=>\{.*return \3\}\)\(\2,\3,[$\w]+\);/, '')
             // Not using `ref`, `on:`, or `oncapture:`
             .replace(/if\("ref"===([\w$]+)\)([\w$]+)\|\|([\w$]+)\(([\w$]+)\);else if\("on:"===\1\.slice\(0,3\)\)\{(?:const|let) ([\w$]+)=\1\.slice\(3\);([\w$]+)&&\4\.removeEventListener\(\5,\6\),\3&&\4\.addEventListener\(\5,\3\)\}else if\("oncapture:"===\1\.slice\(0,10\)\)\{(?:const|let) \5=\1\.slice\(10\);\6&&\4\.removeEventListener\(\5,\6,(?:true|1|!0)\),\3&&\4\.addEventListener\(\5,\3,(?:true|1|!0)\)\}else /, '')
             // Solid component call
