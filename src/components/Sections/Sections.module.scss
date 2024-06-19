@@ -1,8 +1,6 @@
 @use '@/variables.scss' as *;
 
 .section {
-  display: flex;
-  flex-flow: column;
   padding: 3rem max(calc(50% - 620px), calc(2rem + env(safe-area-inset-right)), 5%) 3rem
     max(calc(50% - 620px), calc(2rem + env(safe-area-inset-left)), 5%);
 
