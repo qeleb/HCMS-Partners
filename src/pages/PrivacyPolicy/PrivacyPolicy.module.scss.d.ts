@@ -1,4 +1,4 @@
 declare const classNames: {
   readonly PrivacyPolicy: 'PrivacyPolicy';
 };
-export = classNames;
+export default classNames;

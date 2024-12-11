@@ -1,4 +1,4 @@
 declare const classNames: {
   readonly LabeledBanner: 'LabeledBanner';
 };
-export = classNames;
+export default classNames;

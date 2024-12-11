@@ -1,7 +1,6 @@
 import { A, useBeforeLeave } from '@solidjs/router';
 import { createSignal } from 'solid-js';
 import iconLogo from '@/assets/logo.svg?url';
-
 import styles from '@/components/Navbar/Navbar.module.scss';
 
 export const NavbarItems = () => (

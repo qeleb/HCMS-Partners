@@ -4,10 +4,11 @@ import { readFileSync as read, readdirSync, writeFileSync as write } from 'node:
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import swc from '@rollup/plugin-swc';
+import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { minifyTemplateLiterals } from 'rollup-plugin-minify-template-literals';
 import { visualizer } from 'rollup-plugin-visualizer';
 import injectPreload from 'unplugin-inject-preload/vite';
-import { defineConfig, loadEnv, type Plugin } from 'vite';
+import { type Plugin, defineConfig, loadEnv } from 'vite';
 import { checker } from 'vite-plugin-checker';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
@@ -16,12 +17,12 @@ import solid from 'vite-plugin-solid';
 import svg from 'vite-plugin-svgo';
 
 export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
-  const ENV = { ...process.env, ...loadEnv(mode, 'env', '') };
+  const ENV = { ...process.env, ...loadEnv(mode, 'env') };
 
   return defineConfig({
     envDir: 'env',
     build: {
-      target: 'es2021',
+      target: browserslistToEsbuild(),
       rollupOptions: {
         output: { entryFileNames: '[hash:6].js', chunkFileNames: '[hash:6].js', assetFileNames: '[hash:6][extname]' },
         treeshake: { propertyReadSideEffects: false, tryCatchDeoptimization: false },
@@ -33,11 +34,11 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         ecma: 2020,
         compress: { arguments: true, booleans_as_integers: true, hoist_funs: true, passes: 4, pure_new: true, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true } as any, //prettier-ignore
         format: { comments: false, wrap_func_args: false },
-        mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed|intent|singleFlight)$/ } }, //prettier-ignore
+        mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed|intent)$/ } }, //prettier-ignore
       },
       modulePreload: { polyfill: false }, // Delete this line if outputting more than 1 chunk
     },
-    css: { devSourcemap: true },
+    css: { modules: { exportGlobals: true }, preprocessorOptions: { scss: { api: 'modern-compiler' } }, devSourcemap: true }, //prettier-ignore
     plugins: [
       {
         name: 'vite-plugin-optimize-solid-css-modules',
@@ -77,7 +78,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       }),
       injectPreload({ files: [{ entryMatch: /logo\.svg$/ }], injectTo: 'head' }),
       optimizeCssModules(),
-      sassDts({ enabledMode: ['development', 'production'], prettierFilePath: resolve(fileURLToPath(new URL('.', import.meta.url)), '.prettierrc') }), //prettier-ignore
+      sassDts({ enabledMode: ['development', 'production'], esmExport: true, prettierFilePath: resolve(fileURLToPath(new URL('.', import.meta.url)), '.prettierrc') }), //prettier-ignore
       mode === 'production' && minifyTemplateLiterals(),
       ENV.ANALYZE === 'true' &&
         visualizer({
@@ -143,8 +144,8 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         enforce: 'post',
         writeBundle({ dir }) {
           const files = readdirSync(dir!);
-          files.filter(x => x.endsWith('.json')).forEach(x => write(`${dir}/${x}`, JSON.stringify(JSON.parse(read(`${dir}/${x}`, 'utf-8'))), { encoding: 'utf-8' }))
-          files.filter(x => x.endsWith('.css') || x.endsWith('.js')).forEach(x => write(`${dir}/${x}`, read(`${dir}/${x}`, 'utf-8').trim(), { encoding: 'utf-8' }))
+          files.filter(x => x.endsWith('.json')).forEach(x => write(`${dir}/${x}`, JSON.stringify(JSON.parse(read(`${dir}/${x}`, 'utf-8'))), 'utf-8'))
+          files.filter(x => x.endsWith('.css') || x.endsWith('.js')).forEach(x => write(`${dir}/${x}`, read(`${dir}/${x}`, 'utf-8').trim(), 'utf-8'))
         }, //prettier-ignore
       } as Plugin,
     ].filter(Boolean),

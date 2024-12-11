@@ -30,26 +30,26 @@ export const SectionClientsSample = () => (
       level of expertise that few can match.
     </span>
     <div class={`${styles.grid} ${styles.gridClients}`}>
-      <ImageSample {...[iconDresser, 'Dresser-Rand', '31/4']} />
-      <ImageSample {...[iconISS, 'ISS', '8/7']} />
-      <ImageSample {...[iconGevity, 'Gevity', '127/58']} />
-      <ImageSample {...[iconLPS, 'Lender Processing Services', '141/80']} />
-      <ImageSample {...[iconSourceFire, 'Source Fire', '155/56']} />
-      <ImageSample {...[iconFIS, 'Fidelity National Information Services', '63/31']} />
-      <ImageSample {...[iconUniversityHospitals, 'University Hospitals', '31/14']} />
-      <ImageSample {...[iconDealerTire, 'Dealer Tire', '155/29']} />
-      <ImageSample {...[iconBlackKnight, 'Black Knight', '31/8']} />
-      <ImageSample {...[iconAllscripts, 'Allscripts', '155/34']} />
-      <ImageSample {...[iconETrade, 'E-Trade Financial', '300/79']} />
-      <ImageSample {...[iconFidelity, 'Fidelity National Financial', '129/46']} />
-      <ImageSample {...[iconServiceLink, 'Service Link', '152/43']} />
-      <ImageSample {...[iconLincoln, 'Lincoln Financial Group', '155/56']} />
-      <ImageSample {...[iconLaitram, 'Laitram', '145/44']} />
-      <ImageSample {...[iconLafayette, 'Lafayette General Medical Center', '143/80']} />
-      <ImageSample {...[iconStPetersburg, 'St. Petersburg', '145/119']} />
-      <ImageSample {...[iconAtrium, 'Atrium Windows and Doors', '70/27']} />
-      <ImageSample {...[iconOhioHealth, 'Ohio Health', '155/36']} />
-      <ImageSample {...[iconStuller, 'Stuller', '155/58']} />
+      {ImageSample(iconDresser, 'Dresser-Rand', '31/4')}
+      {ImageSample(iconISS, 'ISS', '8/7')}
+      {ImageSample(iconGevity, 'Gevity', '127/58')}
+      {ImageSample(iconLPS, 'Lender Processing Services', '141/80')}
+      {ImageSample(iconSourceFire, 'Source Fire', '155/56')}
+      {ImageSample(iconFIS, 'Fidelity National Information Services', '63/31')}
+      {ImageSample(iconUniversityHospitals, 'University Hospitals', '31/14')}
+      {ImageSample(iconDealerTire, 'Dealer Tire', '155/29')}
+      {ImageSample(iconBlackKnight, 'Black Knight', '31/8')}
+      {ImageSample(iconAllscripts, 'Allscripts', '155/34')}
+      {ImageSample(iconETrade, 'E-Trade Financial', '300/79')}
+      {ImageSample(iconFidelity, 'Fidelity National Financial', '129/46')}
+      {ImageSample(iconServiceLink, 'Service Link', '152/43')}
+      {ImageSample(iconLincoln, 'Lincoln Financial Group', '155/56')}
+      {ImageSample(iconLaitram, 'Laitram', '145/44')}
+      {ImageSample(iconLafayette, 'Lafayette General Medical Center', '143/80')}
+      {ImageSample(iconStPetersburg, 'St. Petersburg', '145/119')}
+      {ImageSample(iconAtrium, 'Atrium Windows and Doors', '70/27')}
+      {ImageSample(iconOhioHealth, 'Ohio Health', '155/36')}
+      {ImageSample(iconStuller, 'Stuller', '155/58')}
     </div>
   </section>
 );

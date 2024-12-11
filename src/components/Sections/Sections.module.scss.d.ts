@@ -11,4 +11,4 @@ declare const classNames: {
   readonly sectionDim: 'sectionDim';
   readonly sectionClientsSample: 'sectionClientsSample';
 };
-export = classNames;
+export default classNames;
