@@ -1,6 +1,7 @@
 declare const classNames: {
   readonly section: 'section';
   readonly founders: 'founders';
+  readonly history: 'history';
   readonly grid: 'grid';
   readonly gridServices: 'gridServices';
   readonly gridPartners: 'gridPartners';

@@ -30,7 +30,7 @@ nav {
     padding: env(safe-area-inset-top) max(calc(50% - 620px), calc(4rem + env(safe-area-inset-right))) 0
       max(calc(50% - 620px), calc(4rem + env(safe-area-inset-left)));
     background: #ffffffd0;
-    box-shadow: 5px 3px 8px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 5px 3px 8px 0 #0001;
     font-weight: 400;
     transition: backdrop-filter 0.2s ease;
     -webkit-backdrop-filter: blur(6px);
@@ -99,7 +99,7 @@ nav {
     flex-flow: column;
     height: 100%;
     padding-bottom: 1rem;
-    box-shadow: 5px 3px 8px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 5px 3px 8px 0 #0001;
     transition: all 0.45s ease;
     clip-path: inset(0 0 100% 0);
 
@@ -112,7 +112,7 @@ nav {
   }
 
   &.show {
-    box-shadow: 5px 3px 8px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 5px 3px 8px 0 #0001;
     transition-delay: 0s, 0.28s;
     transition-duration: 0.45s, 0.45s;
     -webkit-backdrop-filter: blur(6px);
@@ -131,7 +131,7 @@ nav {
   }
 
   /* stylelint-disable-next-line order/order */
-  @media screen and (max-width: 1024px) {
+  @media screen and (width <= 1024px) {
     & > .nav-main {
       padding: env(safe-area-inset-top) max(calc(50% - 620px), calc(2rem + env(safe-area-inset-right))) 0
         max(calc(50% - 620px), calc(2rem + env(safe-area-inset-left)));

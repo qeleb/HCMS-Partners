@@ -4,7 +4,7 @@
 
   & > img {
     width: 100%;
-    box-shadow: 2px 3px 7px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 7px 0 #0002;
   }
 
   & > span {
@@ -12,7 +12,7 @@
     top: 10px;
     right: calc(10px + env(safe-area-inset-right));
     padding: 0.5rem 1rem;
-    background: rgba(54, 54, 54, 0.5);
+    background: #4448;
     color: #fff;
     font-size: 12px;
     letter-spacing: 1px;
