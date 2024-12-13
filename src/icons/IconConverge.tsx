@@ -1,0 +1,10 @@
+export const IconConverge = () => (
+  <svg viewBox="-4 -4 210 210">
+    <path
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="8"
+      d="M110 18v74h74v-6h-64l82-82-5-4-81 82V18zM4 202l82-82v64h6v-74H18v6h64L0 197z"
+    />
+  </svg>
+);

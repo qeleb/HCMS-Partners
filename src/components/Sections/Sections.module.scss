@@ -76,12 +76,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, clamp(20%, 165px, 95%));
     justify-content: center;
+    overflow: hidden;
     margin: 1.5rem 0 0;
 
     & > li {
       display: flex;
       flex-flow: column;
-      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
       height: 100%;
       padding: 0.5rem 1rem;
       text-align: center;
@@ -93,15 +95,122 @@
       }
 
       & > p {
+        flex-grow: 1;
+        margin: 0;
         font-size: 0.85rem;
         letter-spacing: 1px;
       }
 
-      //TODO: Add icon & line
-
       & > div {
+        position: relative;
+        width: 5rem;
+        height: 5rem;
+        padding: 1.25rem;
+        border-radius: 50%;
+        background: #cf0a2c;
+
+        & > svg {
+          color: #fff;
+          fill: #fff;
+        }
+
+        &::before,
+        &::after {
+          position: absolute;
+          top: 50%;
+          z-index: -1;
+          width: 110%;
+          height: 2px;
+          background: #ddd;
+          translate: 0 -50%;
+        }
+      }
+
+      & > small {
         font-size: 1rem;
         letter-spacing: 2px;
+      }
+
+      &:first-child > div {
+        background: #e01234;
+      }
+
+      &:nth-child(4) > div {
+        background: #b50926;
+      }
+
+      &:last-child > div {
+        background: #ad0a25;
+      }
+
+      &:not(:first-child) > div::before {
+        content: '';
+        left: -100%;
+      }
+
+      &:not(:last-child) > div::after {
+        content: '';
+        left: 100%;
+      }
+    }
+  }
+
+  & > .vision {
+    justify-content: flex-start;
+    overflow: hidden;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    border-radius: 10px;
+    background-color: #fff;
+    background-image: url('@/assets/backgrounds/whiteboard_bg.webp');
+    background-position: bottom right;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    & > ul {
+      width: clamp(45%, 32rem, 100%);
+      padding: 0 1.5rem 1.5rem;
+      background: linear-gradient(to right, #fff9, #fff5 90%, #fff0);
+      backdrop-filter: blur(4px);
+
+      & > li {
+        & > h3 {
+          margin: 1.5rem 0 0;
+          color: #cf0a2c;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
+
+  & > .provide {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, clamp(21.25%, 225px, 95%));
+    grid-auto-flow: dense;
+    gap: 1.5rem 5%;
+    margin: 1.5rem 0 0;
+
+    & > div {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+
+      & > p {
+        text-align: justify;
+      }
+
+      & > svg {
+        width: 3.75rem;
+        color: #cf0a2c;
+        fill: #cf0a2c;
+      }
+
+      & > ul {
+        padding: 0 0 0 2.5rem;
+        list-style-type: disc;
+        text-align: start;
       }
     }
   }
@@ -165,7 +274,7 @@
   }
 
   &.sectionQuestions {
-    background-image: url('@/assets/cta_bg.webp');
+    background-image: url('@/assets/backgrounds/cta_bg.webp');
     background-position: center center;
     background-size: cover;
     color: #fff;
