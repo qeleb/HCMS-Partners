@@ -7,14 +7,16 @@
     box-shadow: 2px 3px 7px 0 #0002;
   }
 
-  & > span {
+  & > div {
     position: absolute;
     top: 10px;
     right: calc(10px + env(safe-area-inset-right));
     padding: 0.5rem 1rem;
-    background: #4448;
+    background: #4447;
     color: #fff;
     font-size: 12px;
     letter-spacing: 1px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
   }
 }

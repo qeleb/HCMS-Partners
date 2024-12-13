@@ -1607,16 +1607,16 @@ __metadata:
   linkType: hard
 
 "browserslist@npm:^4.22.2, browserslist@npm:^4.24.0":
-  version: 4.24.2
-  resolution: "browserslist@npm:4.24.2"
+  version: 4.24.3
+  resolution: "browserslist@npm:4.24.3"
   dependencies:
-    caniuse-lite: ^1.0.30001669
-    electron-to-chromium: ^1.5.41
-    node-releases: ^2.0.18
+    caniuse-lite: ^1.0.30001688
+    electron-to-chromium: ^1.5.73
+    node-releases: ^2.0.19
     update-browserslist-db: ^1.1.1
   bin:
     browserslist: cli.js
-  checksum: cf64085f12132d38638f38937a255edb82c7551b164a98577b055dd79719187a816112f7b97b9739e400c4954cd66479c0d7a843cb816e346f4795dc24fd5d97
+  checksum: 016efc9953350e3a7212edcfdd72210cb33b339c1a974a77c0715eb67d23d7e5cd0a073ce1c801ab09235d8c213425ca51b92d41bbb829b833872b45f885fe7c
   languageName: node
   linkType: hard
 
@@ -1710,7 +1710,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001669":
+"caniuse-lite@npm:^1.0.30001669, caniuse-lite@npm:^1.0.30001688":
   version: 1.0.30001688
   resolution: "caniuse-lite@npm:1.0.30001688"
   checksum: b48109e337f924a969ad3505d81cde32624b598f3ff67047dbd69a9bed59672cea37b6095c3a876174511447be5e356d87acac6c859d941572e57c220978e241
@@ -2324,7 +2324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.5.41":
+"electron-to-chromium@npm:^1.5.73":
   version: 1.5.73
   resolution: "electron-to-chromium@npm:1.5.73"
   checksum: 9e23966afabda22090ebd603e8312af5045aca55f02b8490f5dc66e3bcd2dfefbe3ab0968a587050604e9f398bded342315aa2ec78e418d37c7f237c2a2c69b9
@@ -3602,13 +3602,13 @@ __metadata:
   linkType: hard
 
 "internal-slot@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "internal-slot@npm:1.0.7"
+  version: 1.1.0
+  resolution: "internal-slot@npm:1.1.0"
   dependencies:
     es-errors: ^1.3.0
-    hasown: ^2.0.0
-    side-channel: ^1.0.4
-  checksum: cadc5eea5d7d9bc2342e93aae9f31f04c196afebb11bde97448327049f492cd7081e18623ae71388aac9cd237b692ca3a105be9c68ac39c1dec679d7409e33eb
+    hasown: ^2.0.2
+    side-channel: ^1.1.0
+  checksum: 8e0991c2d048cc08dab0a91f573c99f6a4215075887517ea4fa32203ce8aea60fa03f95b177977fa27eb502e5168366d0f3e02c762b799691411d49900611861
   languageName: node
   linkType: hard
 
@@ -3667,12 +3667,12 @@ __metadata:
   linkType: hard
 
 "is-boolean-object@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "is-boolean-object@npm:1.2.0"
+  version: 1.2.1
+  resolution: "is-boolean-object@npm:1.2.1"
   dependencies:
-    call-bind: ^1.0.7
+    call-bound: ^1.0.2
     has-tostringtag: ^1.0.2
-  checksum: cebc780cc3881dfb0c6c933e308f6a8eccf07ef92a7ea533fb2ee4fb7d704473b476f0b345fea4f2f45fe70937ef568a2f450eb6000d08b99350d87280927ff8
+  checksum: 2672609f0f2536172873810a38ec006a415e43ddc6a240f7638a1659cb20dfa91cc75c8a1bed36247bb046aa8f0eab945f20d1203bc69606418bd129c745f861
   languageName: node
   linkType: hard
 
@@ -3703,7 +3703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-date-object@npm:^1.0.5":
+"is-date-object@npm:^1.0.5, is-date-object@npm:^1.1.0":
   version: 1.1.0
   resolution: "is-date-object@npm:1.1.0"
   dependencies:
@@ -3879,13 +3879,13 @@ __metadata:
   linkType: hard
 
 "is-symbol@npm:^1.0.4, is-symbol@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "is-symbol@npm:1.1.0"
+  version: 1.1.1
+  resolution: "is-symbol@npm:1.1.1"
   dependencies:
-    call-bind: ^1.0.7
-    has-symbols: ^1.0.3
-    safe-regex-test: ^1.0.3
-  checksum: 3623c934c8e61ddd6ef0927a17eb3da3cb9a9894f2fb8a96d447887d085d43e5d8bb59a8f97e46b54a919fc3f8845df29686672ad693d028570627bc661bcb6c
+    call-bound: ^1.0.2
+    has-symbols: ^1.1.0
+    safe-regex-test: ^1.1.0
+  checksum: bfafacf037af6f3c9d68820b74be4ae8a736a658a3344072df9642a090016e281797ba8edbeb1c83425879aae55d1cb1f30b38bf132d703692b2570367358032
   languageName: node
   linkType: hard
 
@@ -3906,11 +3906,11 @@ __metadata:
   linkType: hard
 
 "is-weakref@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "is-weakref@npm:1.0.2"
+  version: 1.1.0
+  resolution: "is-weakref@npm:1.1.0"
   dependencies:
-    call-bind: ^1.0.2
-  checksum: 95bd9a57cdcb58c63b1c401c60a474b0f45b94719c30f548c891860f051bc2231575c290a6b420c6bc6e7ed99459d424c652bd5bf9a1d5259505dc35b4bf83de
+    call-bound: ^1.0.2
+  checksum: 2a2f3a1746ee1baecf9ac6483d903cd3f8ef3cca88e2baa42f2e85ea064bd246d218eed5f6d479fc1c76dae2231e71133b6b86160e821d176932be9fae3da4da
   languageName: node
   linkType: hard
 
@@ -4697,7 +4697,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^2.0.18":
+"node-releases@npm:^2.0.19":
   version: 2.0.19
   resolution: "node-releases@npm:2.0.19"
   checksum: 917dbced519f48c6289a44830a0ca6dc944c3ee9243c468ebd8515a41c97c8b2c256edb7f3f750416bc37952cc9608684e6483c7b6c6f39f6bd8d86c52cfe658
@@ -5509,7 +5509,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"safe-regex-test@npm:^1.0.3":
+"safe-regex-test@npm:^1.0.3, safe-regex-test@npm:^1.1.0":
   version: 1.1.0
   resolution: "safe-regex-test@npm:1.1.0"
   dependencies:
@@ -5859,7 +5859,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"side-channel@npm:^1.0.4":
+"side-channel@npm:^1.1.0":
   version: 1.1.0
   resolution: "side-channel@npm:1.1.0"
   dependencies:
@@ -7000,7 +7000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"which-boxed-primitive@npm:^1.0.2":
+"which-boxed-primitive@npm:^1.0.2, which-boxed-primitive@npm:^1.1.0":
   version: 1.1.0
   resolution: "which-boxed-primitive@npm:1.1.0"
   dependencies:
@@ -7014,23 +7014,23 @@ __metadata:
   linkType: hard
 
 "which-builtin-type@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "which-builtin-type@npm:1.2.0"
+  version: 1.2.1
+  resolution: "which-builtin-type@npm:1.2.1"
   dependencies:
-    call-bind: ^1.0.7
+    call-bound: ^1.0.2
     function.prototype.name: ^1.1.6
     has-tostringtag: ^1.0.2
     is-async-function: ^2.0.0
-    is-date-object: ^1.0.5
+    is-date-object: ^1.1.0
     is-finalizationregistry: ^1.1.0
     is-generator-function: ^1.0.10
-    is-regex: ^1.1.4
+    is-regex: ^1.2.1
     is-weakref: ^1.0.2
     isarray: ^2.0.5
-    which-boxed-primitive: ^1.0.2
+    which-boxed-primitive: ^1.1.0
     which-collection: ^1.0.2
-    which-typed-array: ^1.1.15
-  checksum: 6d40ecdf33a28c3fdeab13e7e3b4289fb51f7ebd0983e628d50fa42e113d8be1bc7dd0e6eb23c6b6a0c2c0c7667763eca3a2af1f6d768e48efba8073870eb568
+    which-typed-array: ^1.1.16
+  checksum: 7a3617ba0e7cafb795f74db418df889867d12bce39a477f3ee29c6092aa64d396955bf2a64eae3726d8578440e26777695544057b373c45a8bcf5fbe920bf633
   languageName: node
   linkType: hard
 
@@ -7046,7 +7046,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"which-typed-array@npm:^1.1.14, which-typed-array@npm:^1.1.15":
+"which-typed-array@npm:^1.1.14, which-typed-array@npm:^1.1.15, which-typed-array@npm:^1.1.16":
   version: 1.1.16
   resolution: "which-typed-array@npm:1.1.16"
   dependencies:
