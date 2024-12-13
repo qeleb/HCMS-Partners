@@ -117,6 +117,8 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
             .replace(/if\("ref"===([\w$]+)\)([\w$]+)\|\|([\w$]+)\(([\w$]+)\);else if\("on:"===\1\.slice\(0,3\)\)\{(?:const|let) ([\w$]+)=\1\.slice\(3\);([\w$]+)&&\4\.removeEventListener\(\5,\6\),\3&&\4\.addEventListener\(\5,\3\)\}else if\("oncapture:"===\1\.slice\(0,10\)\)\{(?:const|let) \5=\1\.slice\(10\);\6&&\4\.removeEventListener\(\5,\6,(?:true|1|!0)\),\3&&\4\.addEventListener\(\5,\3,(?:true|1|!0)\)\}else /, '')
             // Solid component call
             .replace(/([\w$]+)\(([\w$]+),\s*\{\}\)/g, '$1($2)')
+            // Remove closing tag </svg> from SVG
+            .replace(/><\/svg>(["']\))/g, '>$1')
             // Double equals
             .replace(/(?<![\d."])"===/g, '"=='); //prettier-ignore
           if (o.code.split('formnovalidate').length < 4) o.code = o.code.replace(',formnovalidate:{$:"formNoValidate",BUTTON:1,INPUT:1}', ''); //prettier-ignore

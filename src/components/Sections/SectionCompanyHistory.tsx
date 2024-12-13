@@ -1,9 +1,5 @@
 import styles from '@/components/Sections/Sections.module.scss';
-import { IconAward } from '@/icons/IconAward';
-import { IconConverge } from '@/icons/IconConverge';
-import { IconHierarchy } from '@/icons/IconHierarchy';
-import { IconHome } from '@/icons/IconHome';
-import { IconSettings } from '@/icons/IconSettings';
+import { IconAward, IconConverge, IconHierarchy, IconHome, IconSettings } from '@/components/svg';
 
 export const SectionCompanyHistory = () => (
   <section class={styles.section}>

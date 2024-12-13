@@ -1,8 +1,5 @@
 import styles from '@/components/Sections/Sections.module.scss';
-import { IconEarth } from '@/icons/IconEarth';
-import { IconMapPin } from '@/icons/IconMapPin';
-import { IconReticle } from '@/icons/IconReticle';
-import { IconTools } from '@/icons/IconTools';
+import { IconEarth, IconMapPin, IconReticle, IconTools } from '@/components/svg';
 
 export const SectionWeProvide = () => (
   <section class={styles.section}>
