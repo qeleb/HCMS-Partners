@@ -42,7 +42,7 @@ footer {
         background: #fff;
         fill: #cf0a2c;
 
-        @media only screen and (hover: hover) {
+        @media (hover: hover) {
           &:hover {
             background: #cf0a2c;
             fill: #fff;
@@ -82,8 +82,28 @@ footer {
     }
   }
 
+  & > .copyright {
+    text-align: center;
+    text-wrap: pretty;
+
+    & > span {
+      opacity: 0.7;
+    }
+  }
+
+  a {
+    color: #c3c3c3;
+    line-height: 18px;
+    letter-spacing: 0.85px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
   /* stylelint-disable-next-line order/order */
-  @media screen and (width <= 1024px) {
+  @media (width <= 1024px) {
     padding: 0 max(calc(50% - 620px), 2rem);
 
     .connect {
@@ -103,26 +123,6 @@ footer {
     .main {
       flex-flow: column;
       text-align: center;
-    }
-  }
-
-  & > .copyright {
-    text-align: center;
-    text-wrap: pretty;
-
-    & > span {
-      opacity: 0.7;
-    }
-  }
-
-  a {
-    color: #c3c3c3;
-    line-height: 18px;
-    letter-spacing: 0.85px;
-    transition: all 0.2s ease;
-
-    &:hover {
-      color: #fff;
     }
   }
 }

@@ -55,7 +55,7 @@ nav {
       transition: all 0.15s ease;
       stroke-width: 0.5;
 
-      @media only screen and (hover: hover) {
+      @media (hover: hover) {
         &:hover {
           stroke-width: 0.8;
         }
@@ -131,7 +131,7 @@ nav {
   }
 
   /* stylelint-disable-next-line order/order */
-  @media screen and (width <= 1024px) {
+  @media (width <= 1024px) {
     & > .nav-main {
       padding: env(safe-area-inset-top) max(calc(50% - 620px), calc(2rem + env(safe-area-inset-right))) 0
         max(calc(50% - 620px), calc(2rem + env(safe-area-inset-left)));

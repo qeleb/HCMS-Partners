@@ -33,7 +33,7 @@
       text-align: center;
       transition: all 0.15s ease;
 
-      @media only screen and (hover: hover) {
+      @media (hover: hover) {
         &:hover {
           background: #9f1730 !important;
         }
@@ -186,9 +186,10 @@
 
   & > .provide {
     display: grid;
-    grid-template-columns: repeat(auto-fit, clamp(21.25%, 225px, 95%));
+    grid-template-columns: repeat(auto-fit, clamp(21.7%, 200px, 95%));
     grid-auto-flow: dense;
-    gap: 1.5rem 5%;
+    gap: 1.5rem 2.5rem;
+    justify-content: space-evenly;
     margin: 1.5rem 0 0;
 
     & > div {
@@ -209,7 +210,7 @@
       }
 
       & > ul {
-        padding: 0 0 0 2.5rem;
+        padding: 0 0 0 18%;
         list-style-type: disc;
         text-align: start;
       }
@@ -331,7 +332,14 @@
   }
 
   /* stylelint-disable-next-line order/order */
-  @media screen and (width <= 900px) {
+  @media (width <= 1024px) {
+    & > .provide {
+      grid-template-columns: repeat(auto-fit, clamp(44%, 280px, 95%));
+    }
+  }
+
+  /* stylelint-disable-next-line order/order */
+  @media (width <= 900px) {
     & > .grid {
       &.gridServices {
         grid-template: repeat(3, 1fr) / none;
@@ -362,7 +370,7 @@
     }
   }
 
-  @media screen and (width <= 480px) {
+  @media (width <= 480px) {
     & > .grid {
       &.gridServices {
         grid-template: auto / repeat(1, 1fr);
