@@ -8,7 +8,7 @@ export const Footer = () => (
     <div class={styles.connect}>
       <div>
         <strong>HCMS PARTNERS</strong>
-        The oracle HCM Experts
+        The Oracle HCM Experts
       </div>
       <span>
         CONNECT WITH US
