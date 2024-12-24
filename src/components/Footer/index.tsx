@@ -1,4 +1,5 @@
 import { A } from '@solidjs/router';
+import iconLogoPlain from '@/assets/logo_plain.svg?url';
 import { EmailAddress, PhoneNumber, StreetAddress } from '@/components/ContactInfo';
 import styles from '@/components/Footer/Footer.module.scss';
 import { NavbarItems } from '@/components/Navbar';
@@ -6,10 +7,7 @@ import { NavbarItems } from '@/components/Navbar';
 export const Footer = () => (
   <footer>
     <div class={styles.connect}>
-      <div>
-        <strong>HCMS PARTNERS</strong>
-        The Oracle HCM Experts
-      </div>
+      <img prop:src={iconLogoPlain} alt="HCMS Partners" />
       <span>
         CONNECT WITH US
         <a href="//x.com/HCMExperts" aria-label="HCMS Partners on X">

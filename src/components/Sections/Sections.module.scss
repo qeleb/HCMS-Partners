@@ -201,6 +201,11 @@
 
       & > p {
         text-align: justify;
+
+        & > i {
+          font-weight: 600;
+          // font-style: italic;
+        }
       }
 
       & > svg {
@@ -305,13 +310,20 @@
         width: min(26%, 21rem);
         height: 12rem;
         background: #b50926;
-        box-shadow: 2px 3px 7px 0 #0004;
-
         font-size: 16px;
+        filter: drop-shadow(1px 1px 1px #4223);
 
         & > svg {
           width: 4.5rem;
           fill: #fff;
+        }
+
+        &:first-child {
+          background: #cf0a2c;
+        }
+
+        &:last-child {
+          background: #a0051b;
         }
       }
     }

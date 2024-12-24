@@ -13,21 +13,11 @@ footer {
     display: flex;
     gap: 1rem;
     justify-content: space-between;
+    align-items: center;
 
-    & > div {
-      font-weight: 100;
-      font-size: 1rem;
-      line-height: 1rem;
+    & > img {
+      height: 36px;
       opacity: 0.8;
-      transform: scale(0.75, 0.8);
-      transform-origin: 0 0;
-
-      & > strong {
-        display: block;
-        font-size: 2rem;
-        line-height: 2rem;
-        text-wrap: nowrap;
-      }
     }
 
     & > span {
@@ -109,10 +99,6 @@ footer {
     .connect {
       flex-flow: column;
       align-items: center;
-
-      & > div {
-        transform-origin: inherit;
-      }
 
       & > span > a {
         width: 2.5rem;
