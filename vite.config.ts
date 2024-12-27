@@ -77,7 +77,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         }, //prettier-ignore
       }),
       injectPreload({ files: [{ entryMatch: /logo\.svg$/ }], injectTo: 'head' }),
-      optimizeCssModules(),
+      optimizeCssModules({ dictionary: 'etionraldfps0gx-1chbum4v6w25k9y873zjHCONADLYqBEFGIJKMPQRSTUVWXZ_' }),
       sassDts({ enabledMode: ['development', 'production'], esmExport: true, prettierFilePath: resolve(fileURLToPath(new URL('.', import.meta.url)), '.prettierrc') }), //prettier-ignore
       mode === 'production' && minifyTemplateLiterals(),
       ENV.ANALYZE === 'true' &&
