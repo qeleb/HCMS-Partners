@@ -19,6 +19,7 @@ declare module 'solid-js' {
     type Props<T> = { [K in keyof T as `prop:${string & K}`]?: T[K] };
     type ElementProps<T> = { [K in keyof T]: Props<T[K]> & HTMLAttributes<T[K]> };
     interface IntrinsicElements extends ElementProps<HTMLElementTagNameMap> {
+      a: AnchorHTMLAttributes<HTMLAnchorElement> | Props<HTMLAnchorElement>;
       button: ButtonHTMLAttributes<HTMLButtonElement> | Props<HTMLButtonElement>;
       div: HTMLAttributes<HTMLDivElement> | Props<HTMLDivElement>;
       label: LabelHTMLAttributes<HTMLLabelElement> | Props<HTMLLabelElement>;
