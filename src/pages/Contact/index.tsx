@@ -15,7 +15,7 @@ export const Contact = () => {
   const [reason, setReason] = createSignal('');
   const [comments, setComments] = createSignal('');
 
-  const isValid = createMemo(() => name() && email() && phone() && companyName());
+  const isValid = createMemo(() => name() && email() && phone() && companyName() && reason());
   const subject = createMemo(() => `[CONTACT US]: ${reason()} for ${companyName()} `);
   const body = createMemo(
     () => `Reason: ${reason()}
@@ -41,7 +41,7 @@ ${comments()}`
           <input placeholder="Phone*" type="tel" onInput={e => setPhone(e.currentTarget.value)} />
           <input placeholder="Company Name*" onInput={e => setCompanyName(e.currentTarget.value)} />
           <select name="Reason" onInput={e => setReason(e.currentTarget.value)}>
-            <option value="Miscellaneous">Reason for Contacting (Select one)</option>
+            <option value="">Reason for Contacting (Select one)</option>
             <option value="Acquisition Planning">Acquisition Planning</option>
             <option value="Application Maintenance & Support">Application Maintenance & Support</option>
             <option value="Custom Development">Custom Development</option>
