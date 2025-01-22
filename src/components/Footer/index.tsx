@@ -44,7 +44,7 @@ export const Footer = () => (
       </div>
     </div>
     <div class={styles.copyright}>
-      <span>HCMS PARTNERS © 2010 - 2024 • </span>
+      <span>HCMS PARTNERS © 2010 - 2025 • </span>
       <A href="/privacy-policy">PRIVACY POLICY</A>
     </div>
   </footer>

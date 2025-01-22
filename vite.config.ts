@@ -16,6 +16,8 @@ import sassDts from 'vite-plugin-sass-dts';
 import solid from 'vite-plugin-solid';
 import svg from 'vite-plugin-svgo';
 
+const path_root = fileURLToPath(new URL('.', import.meta.url));
+
 export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
   const ENV = { ...process.env, ...loadEnv(mode, 'env') };
 
@@ -68,7 +70,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       }),
       checker({ typescript: true, overlay: false, enableBuild: true }),
       createHtmlPlugin({
-        entry: '/src/index.tsx', // resolve(fileURLToPath(new URL('.', import.meta.url)), 'src/index.tsx'),
+        entry: '/src/index.tsx', // resolve(path_root, 'src/index.tsx'),
         minify: {
           collapseBooleanAttributes: true, collapseWhitespace: true, decodeEntities: true, minifyCSS: true,
           minifyJS: true, minifyURLs: true, removeComments: true, removeEmptyAttributes: true,
@@ -78,7 +80,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       }),
       injectPreload({ files: [{ entryMatch: /logo\.svg$/ }], injectTo: 'head' }),
       optimizeCssModules({ dictionary: 'etionraldfps0gx-1chbum4v6w25k9y873zjHCONADLYqBEFGIJKMPQRSTUVWXZ_' }),
-      sassDts({ enabledMode: ['development', 'production'], esmExport: true, prettierFilePath: resolve(fileURLToPath(new URL('.', import.meta.url)), '.prettierrc') }), //prettier-ignore
+      sassDts({ enabledMode: ['development', 'production'], esmExport: true, prettierFilePath: resolve(path_root, '.prettierrc') }), //prettier-ignore
       mode === 'production' && minifyTemplateLiterals(),
       ENV.ANALYZE === 'true' &&
         visualizer({
@@ -86,7 +88,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
           open: true,
           gzipSize: true,
           brotliSize: true,
-          filename: resolve(fileURLToPath(new URL('.', import.meta.url)), 'dist/analyze.html'),
+          filename: resolve(path_root, 'dist/analyze.html'),
         }),
       {
         name: 'vite-plugin-remove-junk',
@@ -111,6 +113,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
             .replace(/\(\(([$\w]+),[$\w]+\)=>\{if\(null==\1\)throw Error\("<A> and 'use' router primitives can be only used inside a Route\."\);return \1\}\)\(([$\w]+\([$\w]+\))\)/, "$2")
             .replace(/if\(void 0===([$\w]+)\)throw Error\(\1\+" is not a valid base path"\);/, "")
             .replace(/if\(void 0===[$\w]+\)throw Error\(`Path '\$\{[$\w]+\}' is not a routable path`\);if\([$\w]+\.length>=100\)throw Error\("Too many redirects"\);/, "")
+            .replace(/\[a-z0-9\]/g, '[a-z\\d]')
             // Not using `style`, `classList`
             .replace(/if\(["']style["']===([$\w]+)\)return\(\(([$\w]+),\1,([$\w]+)\)=>\{.*return \3\}\)\(\2,\3,[$\w]+\);/, '')
             // Not using `ref`, `on:`, or `oncapture:`
@@ -138,7 +141,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         include: /\.js$/,
         swc: {
           minify: true,
-          jsc: { minify: { compress: { drop_console: true, unsafe_methods: true, unsafe_regexp: true } } }, //prettier-ignore
+          jsc: { minify: { compress: { drop_console: true, unsafe_methods: true, unsafe_regexp: true } } },
         },
       }),
       {
@@ -151,6 +154,6 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         }, //prettier-ignore
       } as Plugin,
     ].filter(Boolean),
-    resolve: { alias: { '@': resolve(fileURLToPath(new URL('.', import.meta.url)), 'src') }, dedupe: ['solid-js'] },
+    resolve: { alias: { '@': resolve(path_root, 'src') }, dedupe: ['solid-js'] },
   });
 };

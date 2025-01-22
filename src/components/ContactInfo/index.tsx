@@ -1,5 +1,5 @@
 export const StreetAddress = () => (
-  <a href="//google.com/maps?q=607+51st+St+NW,+Bradenton,+FL+34209">
+  <a href="//google.com/maps?q=607+51st+St+NW+Bradenton+FL+34209">
     HCMS Partners LLC
     <br />
     607 51st Street NW
