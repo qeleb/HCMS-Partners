@@ -15,20 +15,6 @@ export const Contact = () => {
   const [reason, setReason] = createSignal('');
   const [comments, setComments] = createSignal('');
 
-  const isValid = createMemo(() => name() && email() && phone() && companyName() && reason());
-  const subject = createMemo(() => `[CONTACT US]: ${reason()} for ${companyName()} `);
-  const body = createMemo(
-    () => `Reason: ${reason()}
-
-Name: ${name()}
-Email: ${email()}
-Phone #: ${phone()}
-Company Name: ${companyName()}
-
-Comments:
-${comments()}`
-  );
-
   return (
     <div class={styles.Contact}>
       <LabeledBanner {...[bannerHK, 'HONG KONG', '1024/493']} />
@@ -36,35 +22,52 @@ ${comments()}`
       <p>We'd be happy to answer any questions you might have!</p>
       <div class={styles.contactBody}>
         <div class={styles.contactForm}>
-          <input placeholder="Name*" onInput={e => setName(e.currentTarget.value)} />
-          <input placeholder="Email*" type="email" onInput={e => setEmail(e.currentTarget.value)} />
-          <input placeholder="Phone*" type="tel" onInput={e => setPhone(e.currentTarget.value)} />
-          <input placeholder="Company Name*" onInput={e => setCompanyName(e.currentTarget.value)} />
-          <select name="Reason" onInput={e => setReason(e.currentTarget.value)}>
+          <input placeholder="Name*" onInput={e => setName(e.target.value)} />
+          <input placeholder="Email*" pattern="^\S+@\S+$" type="email" onInput={e => setEmail(e.target.value)} />
+          <input placeholder="Phone*" type="tel" onInput={e => setPhone(e.target.value)} />
+          <input placeholder="Company Name*" onInput={e => setCompanyName(e.target.value)} />
+          <select name="Reason" onInput={e => setReason(e.target.value)}>
             <option value="">Reason for Contacting (Select one)</option>
-            <option value="Acquisition Planning">Acquisition Planning</option>
-            <option value="Application Maintenance & Support">Application Maintenance & Support</option>
-            <option value="Custom Development">Custom Development</option>
-            <option value="Data Conversion & Migration">Data Conversion & Migration</option>
-            <option value="HR/Payroll Audits">HR/Payroll Audits</option>
-            <option value="iLearning">iLearning</option>
-            <option value="iRecruitment">iRecruitment</option>
-            <option value="Oracle Advanced Benefits">Oracle Advanced Benefits</option>
-            <option value="Oracle Human Resources">Oracle Human Resources</option>
-            <option value="Oracle Payroll">Oracle Payroll</option>
-            <option value="Process Re-engineering / Best Practice Recommendations">
-              Process Re-engineering / Best Practice Recommendations
-            </option>
-            <option value="Employee / Manager Self Service">Employee / Manager Self Service</option>
-            <option value="Oracle Time & Labor">Oracle Time & Labor</option>
-            <option value="Training">Training</option>
-            <option value="Upgrades">Upgrades</option>
+            {[
+              'Acquisition Planning',
+              'Application Maintenance & Support',
+              'Custom Development',
+              'Data Conversion & Migration',
+              'HR/Payroll Audits',
+              'iLearning',
+              'iRecruitment',
+              'Oracle Advanced Benefits',
+              'Oracle Human Resources',
+              'Oracle Payroll',
+              'Process Re-engineering / Best Practice Recommendations',
+              'Employee / Manager Self Service',
+              'Oracle Time & Labor',
+              'Training',
+              'Upgrades',
+            ].map(x => (
+              <option value={x}>{x}</option>
+            ))}
           </select>
-          <textarea placeholder="Comments" onInput={e => setComments(e.currentTarget.value)} />
+          <textarea placeholder="Comments" onInput={e => setComments(e.target.value)} />
           <a
             prop:href={
-              isValid() ? encodeURI(`mailto:solutions@hcmspartners.com?subject=${subject()}&body=${body()}`) : '#'
+              name() && phone() && companyName() && reason() && /^\S+@\S+$/.test(email())
+                ? `mailto:solutions@hcmspartners.com?${new URLSearchParams({
+                    subject: `[CONTACT US]: ${reason()} for ${companyName()}`,
+                    body: `Reason: ${reason()}
+
+Name: ${name()}
+Email: ${email()}
+Phone #: ${phone()}
+Company Name: ${companyName()}
+
+Comments:
+${comments()}`,
+                    cc: email(),
+                  })}`.replaceAll('+', '%20')
+                : '#'
             }
+            aria-label="Compose Email"
           >
             compose
           </a>

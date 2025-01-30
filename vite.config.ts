@@ -141,7 +141,9 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
         include: /\.js$/,
         swc: {
           minify: true,
-          jsc: { minify: { compress: { drop_console: true, unsafe_methods: true, unsafe_regexp: true } } },
+          jsc: {
+            minify: { compress: { drop_console: true, unsafe_methods: true, unsafe_proto: true, unsafe_regexp: true } },
+          },
         },
       }),
       {

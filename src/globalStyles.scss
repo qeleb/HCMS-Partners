@@ -3,7 +3,6 @@
 /* Global Styles */
 * {
   box-sizing: border-box;
-  outline: none !important;
   font-family: Montserrat, sans-serif;
 
   /* Custom Scrollbar for Firefox */ /* stylelint-disable-next-line order/order */
@@ -36,8 +35,12 @@ a {
 }
 
 button {
-  border: none;
+  border: transparent;
   cursor: pointer;
+}
+
+input {
+  outline: transparent;
 }
 
 ul {
