@@ -1,4 +1,4 @@
-import { createMemo, createSignal } from 'solid-js';
+import { createSignal } from 'solid-js';
 import bannerHK from '@/assets/banners/bannerHK.jpg';
 import { EmailAddress, PhoneNumber, StreetAddress } from '@/components/ContactInfo';
 import { LabeledBanner } from '@/components/LabeledBanner';
@@ -28,29 +28,32 @@ export const Contact = () => {
           <input placeholder="Company Name*" onInput={e => setCompanyName(e.target.value)} />
           <select name="Reason" onInput={e => setReason(e.target.value)}>
             <option value="">Reason for Contacting (Select one)</option>
-            {[
-              'Acquisition Planning',
-              'Application Maintenance & Support',
-              'Custom Development',
-              'Data Conversion & Migration',
-              'HR/Payroll Audits',
-              'iLearning',
-              'iRecruitment',
-              'Oracle Advanced Benefits',
-              'Oracle Human Resources',
-              'Oracle Payroll',
-              'Process Re-engineering / Best Practice Recommendations',
-              'Employee / Manager Self Service',
-              'Oracle Time & Labor',
-              'Training',
-              'Upgrades',
-            ].map(x => (
-              <option value={x}>{x}</option>
-            ))}
+            {
+              /* eslint-disable-line solid/prefer-for */ [
+                'Acquisition Planning',
+                'Application Maintenance & Support',
+                'Custom Development',
+                'Data Conversion & Migration',
+                'HR/Payroll Audits',
+                'iLearning',
+                'iRecruitment',
+                'Oracle Advanced Benefits',
+                'Oracle Human Resources',
+                'Oracle Payroll',
+                'Process Re-engineering / Best Practice Recommendations',
+                'Employee / Manager Self Service',
+                'Oracle Time & Labor',
+                'Training',
+                'Upgrades',
+              ].map(x => (
+                <option value={x}>{x}</option>
+              ))
+            }
           </select>
           <textarea placeholder="Comments" onInput={e => setComments(e.target.value)} />
           <a
             prop:href={
+              // eslint-disable-next-line regexp/no-super-linear-backtracking
               name() && phone() && companyName() && reason() && /^\S+@\S+$/.test(email())
                 ? `mailto:solutions@hcmspartners.com?${new URLSearchParams({
                     subject: `[CONTACT US]: ${reason()} for ${companyName()}`,
